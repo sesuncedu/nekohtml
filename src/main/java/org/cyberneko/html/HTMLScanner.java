@@ -16,38 +16,19 @@
 
 package org.cyberneko.html;
 
-import java.io.EOFException;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.util.BitSet;
-import java.util.Locale;
-import java.util.Stack;
-
-import org.apache.xerces.util.EncodingMap;
-import org.apache.xerces.util.NamespaceSupport;
-import org.apache.xerces.util.URI;
-import org.apache.xerces.util.XMLAttributesImpl;
-import org.apache.xerces.util.XMLResourceIdentifierImpl;
-import org.apache.xerces.util.XMLStringBuffer;
-import org.apache.xerces.xni.Augmentations;
-import org.apache.xerces.xni.NamespaceContext;
-import org.apache.xerces.xni.QName;
-import org.apache.xerces.xni.XMLAttributes;
-import org.apache.xerces.xni.XMLDocumentHandler;
-import org.apache.xerces.xni.XMLLocator;
-import org.apache.xerces.xni.XMLResourceIdentifier;
-import org.apache.xerces.xni.XMLString;
-import org.apache.xerces.xni.XNIException;
+import org.apache.xerces.util.*;
+import org.apache.xerces.xni.*;
 import org.apache.xerces.xni.parser.XMLComponentManager;
 import org.apache.xerces.xni.parser.XMLConfigurationException;
 import org.apache.xerces.xni.parser.XMLDocumentScanner;
 import org.apache.xerces.xni.parser.XMLInputSource;
 import org.cyberneko.html.xercesbridge.XercesBridge;
+
+import java.io.*;
+import java.net.URL;
+import java.util.BitSet;
+import java.util.Locale;
+import java.util.Stack;
 
 /**
  * A simple HTML scanner. This scanner makes no attempt to balance tags
