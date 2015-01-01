@@ -22,7 +22,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * This class is here to overcome the XNI changes to the 
+ * This class is here to overcome the XNI changes to the
  * {@code Augmentations} interface. In early versions of XNI, the
  * augmentations interface contained a {@code clear()} method to
  * remove all of the items from the augmentations instance. A later
@@ -33,8 +33,9 @@ import java.util.Hashtable;
  * <strong>Note:</strong>
  * This code is inspired by performance enhancements submitted by
  * Marc-André Morissette.
- * 
+ *
  * @author Andy Clark
+ * @version $Id: $Id
  */
 public class HTMLAugmentations implements Augmentations {
 
@@ -48,6 +49,9 @@ public class HTMLAugmentations implements Augmentations {
     //
     // Public methods
     //
+    /**
+     * <p>Constructor for HTMLAugmentations.</p>
+     */
     public HTMLAugmentations() {
     	// nothing
     }
@@ -69,14 +73,18 @@ public class HTMLAugmentations implements Augmentations {
 
     // since Xerces 2.3.0
 
-    /** Removes all of the elements in this augmentations object. */
+    /**
+     * Removes all of the elements in this augmentations object.
+     */
     public void removeAllItems() {
         fItems.clear();
     } // removeAllItems()
 
     // from Xerces 2.0.0 (beta4) until 2.3.0
 
-    /** Removes all of the elements in this augmentations object. */
+    /**
+     * Removes all of the elements in this augmentations object.
+     */
     public void clear() {
         fItems.clear();
     } // clear()
@@ -86,14 +94,10 @@ public class HTMLAugmentations implements Augmentations {
     //
 
     /**
-     * Add additional information identified by a key to the Augmentations 
-     * structure.
-     * 
-     * @param key    Identifier, can't be {@code null}
-     * @param item   Additional information
+     * {@inheritDoc}
      *
-     * @return The previous value of the specified key in the Augmentations 
-     *         structure, or {@code null} if it did not have one.
+     * Add additional information identified by a key to the Augmentations
+     * structure.
      */
     public Object putItem(String key, Object item) {
         return fItems.put(key, item);
@@ -101,24 +105,18 @@ public class HTMLAugmentations implements Augmentations {
 
 
     /**
-     * Get information identified by a key from the Augmentations structure.
-     * 
-     * @param key    Identifier, can't be {@code null}
+     * {@inheritDoc}
      *
-     * @return The value to which the key is mapped in the Augmentations 
-     *         structure; {@code null} if the key is not mapped to any
-     *         value.
+     * Get information identified by a key from the Augmentations structure.
      */
     public Object getItem(String key) {
         return fItems.get(key);
     } // getItem(String):Object
     
     /**
+     * {@inheritDoc}
+     *
      * Remove additional info from the Augmentations structure
-     * 
-     * @param key    Identifier, can't be {@code null}
-     * @return The previous value of the specified key in the Augmentations 
-     *         structure, or {@code null} if it did not have one.
      */
     public Object removeItem(String key) {
         return fItems.remove(key);
@@ -126,6 +124,8 @@ public class HTMLAugmentations implements Augmentations {
 
     /**
      * Returns an enumeration of the keys in the Augmentations structure.
+     *
+     * @return a {@link java.util.Enumeration} object.
      */
     public Enumeration keys() {
         return fItems.keys();

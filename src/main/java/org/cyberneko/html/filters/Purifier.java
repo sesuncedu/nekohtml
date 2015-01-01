@@ -40,15 +40,15 @@ import java.util.Locale;
  * <li>ensuring the string "--" does not appear in the content of
  *     a comment;
  * <li>ensuring the string "]]&gt;" does not appear in the content of
- *     a CDATA section; 
+ *     a CDATA section;
  * <li>ensuring that the XML declaration has required pseudo-attributes
  *     and that the values are correct;
  * and
  * <li>synthesized missing namespace bindings.
  * </ul>
  * <p>
- * Illegal characters in XML names are converted to the character 
- * sequence "_u####_" where "####" is the value of the Unicode 
+ * Illegal characters in XML names are converted to the character
+ * sequence "_u####_" where "####" is the value of the Unicode
  * character represented in hexadecimal. Whereas illegal characters
  * appearing in document content is converted to the character
  * sequence "\\u####".
@@ -61,9 +61,8 @@ import java.util.Locale;
  * The URI used for synthesized namespace bindings is
  * "http://cyberneko.org/html/ns/synthesized/<i>number</i>" where
  * <i>number</i> is generated to ensure uniqueness.
- * 
+ *
  * @author Andy Clark
- * 
  * @version $Id: Purifier.java,v 1.5 2005/02/14 03:56:54 andyc Exp $
  */
 public class Purifier
@@ -149,6 +148,7 @@ public class Purifier
     // XMLComponent methods
     //
 
+    /** {@inheritDoc} */
     public void reset(XMLComponentManager manager) 
         throws XMLConfigurationException {
 
@@ -165,7 +165,11 @@ public class Purifier
     // XMLDocumentHandler methods
     //
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding,
                               Augmentations augs) throws XNIException {
         fNamespaceContext = fNamespaces 
@@ -175,7 +179,11 @@ public class Purifier
         super.startDocument(locator, encoding, augs);
     } // startDocument(XMLLocator,String,Augmentations)
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding,
                               NamespaceContext nscontext, Augmentations augs)
         throws XNIException {
@@ -185,7 +193,11 @@ public class Purifier
         super.startDocument(locator, encoding, nscontext, augs);
     } // startDocument(XMLLocator,NamespaceContext,String,Augmentations)
 
-    /** XML declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * XML declaration.
+     */
     public void xmlDecl(String version, String encoding, String standalone,
                         Augmentations augs) throws XNIException {
         if (version == null || !version.equals("1.0")) {
@@ -206,7 +218,11 @@ public class Purifier
         super.xmlDecl(version,encoding,standalone,augs);
     } // xmlDecl(String,String,String,Augmentations)
 
-    /** Comment. */
+    /**
+     * {@inheritDoc}
+     *
+     * Comment.
+     */
     public void comment(XMLString text, Augmentations augs)
         throws XNIException {
         StringBuffer str = new StringBuffer(purifyText(text).toString());
@@ -223,7 +239,11 @@ public class Purifier
         super.comment(text, augs);
     } // comment(XMLString,Augmentations)
 
-    /** Processing instruction. */
+    /**
+     * {@inheritDoc}
+     *
+     * Processing instruction.
+     */
     public void processingInstruction(String target, XMLString data,
                                       Augmentations augs)
         throws XNIException {
@@ -232,7 +252,11 @@ public class Purifier
         super.processingInstruction(target, data, augs);
     } // processingInstruction(String,XMLString,Augmentations)
 
-    /** Doctype declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * Doctype declaration.
+     */
     public void doctypeDecl(String root, String pubid, String sysid,
                             Augmentations augs) throws XNIException {
         fSeenDoctype = true;
@@ -249,33 +273,53 @@ public class Purifier
         //       is transient. -Ac
     } // doctypeDecl(String,String,String,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         handleStartElement(element, attrs);
         super.startElement(element, attrs, augs);
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         handleStartElement(element, attrs);
         super.emptyElement(element, attrs, augs);
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
-    /** Start CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start CDATA section.
+     */
     public void startCDATA(Augmentations augs) throws XNIException {
         fInCDATASection = true;
         super.startCDATA(augs);
     } // startCDATA(Augmentations)
 
-    /** End CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * End CDATA section.
+     */
     public void endCDATA(Augmentations augs) throws XNIException {
         fInCDATASection = false;
         super.endCDATA(augs);
     } // endCDATA(Augmentations)
 
-    /** Characters. */
+    /**
+     * {@inheritDoc}
+     *
+     * Characters.
+     */
     public void characters(XMLString text, Augmentations augs)
         throws XNIException {
         text = purifyText(text);
@@ -295,7 +339,11 @@ public class Purifier
         super.characters(text,augs);
     } // characters(XMLString,Augmentations)
 
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(QName element, Augmentations augs)
         throws XNIException {
         element = purifyQName(element);
@@ -311,13 +359,20 @@ public class Purifier
     // Protected methods
     //
 
-    /** Handle start document. */
+    /**
+     * Handle start document.
+     */
     protected void handleStartDocument() {
         fSeenDoctype = false;
         fSeenRootElement = false;
     } // handleStartDocument()
 
-    /** Handle start element. */
+    /**
+     * Handle start element.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+     */
     protected void handleStartElement(QName element, XMLAttributes attrs) {
 
         // handle element and attributes
@@ -361,7 +416,12 @@ public class Purifier
 
     } // handleStartElement(QName,XMLAttributes)
 
-    /** Synthesize namespace binding. */
+    /**
+     * Synthesize namespace binding.
+     *
+     * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+     * @param ns a {@link java.lang.String} object.
+     */
     protected void synthesizeBinding(XMLAttributes attrs, String ns) {
         String prefix = "xmlns";
         String localpart = ns;
@@ -379,7 +439,11 @@ public class Purifier
 
     } // synthesizeBinding(XMLAttributes,String)
 
-    /** Returns an augmentations object with a synthesized item added. */
+    /**
+     * Returns an augmentations object with a synthesized item added.
+     *
+     * @return a {@link org.apache.xerces.xni.Augmentations} object.
+     */
     protected final Augmentations synthesizedAugs() {
         HTMLAugmentations augs = null;
         if (fAugmentations) {
@@ -394,7 +458,12 @@ public class Purifier
     // Protected methods
     //
 
-    /** Purify qualified name. */
+    /**
+     * Purify qualified name.
+     *
+     * @param qname a {@link org.apache.xerces.xni.QName} object.
+     * @return a {@link org.apache.xerces.xni.QName} object.
+     */
     protected QName purifyQName(QName qname) {
         qname.prefix = purifyName(qname.prefix, true);
         qname.localpart = purifyName(qname.localpart, true);
@@ -402,7 +471,13 @@ public class Purifier
         return qname;
     } // purifyQName(QName):QName
 
-    /** Purify name. */
+    /**
+     * Purify name.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @param localpart a boolean.
+     * @return a {@link java.lang.String} object.
+     */
     protected String purifyName(String name, boolean localpart) {
         if (name == null) {
             return name;
@@ -433,7 +508,12 @@ public class Purifier
         return str.toString();
     } // purifyName(String):String
 
-    /** Purify content. */
+    /**
+     * Purify content.
+     *
+     * @param text a {@link org.apache.xerces.xni.XMLString} object.
+     * @return a {@link org.apache.xerces.xni.XMLString} object.
+     */
     protected XMLString purifyText(XMLString text) {
         fStringBuffer.length = 0;
         for (int i = 0; i < text.length; i++) {
@@ -452,7 +532,13 @@ public class Purifier
     // Protected static methods
     //
 
-    /** Returns a padded hexadecimal string for the given value. */
+    /**
+     * Returns a padded hexadecimal string for the given value.
+     *
+     * @param c a int.
+     * @param padlen a int.
+     * @return a {@link java.lang.String} object.
+     */
     protected static String toHexString(int c, int padlen) {
         StringBuffer str = new StringBuffer(padlen);
         str.append(Integer.toHexString(c));

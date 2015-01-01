@@ -19,8 +19,8 @@ package org.cyberneko.html;
 import org.apache.xerces.xni.parser.XMLParseException;
 
 /**
- * Defines an error reporter for reporting HTML errors. There is no such 
- * thing as a fatal error in parsing HTML. I/O errors are fatal but should 
+ * Defines an error reporter for reporting HTML errors. There is no such
+ * thing as a fatal error in parsing HTML. I/O errors are fatal but should
  * throw an {@code IOException} directly instead of reporting an error.
  * <p>
  * When used in a configuration, the error reporter instance should be
@@ -32,10 +32,9 @@ import org.apache.xerces.xni.parser.XMLParseException;
  * property identifier.
  * <p>
  * <strong>Note:</strong>
- * All reported errors are within the domain "http://cyberneko.org/html". 
+ * All reported errors are within the domain "http://cyberneko.org/html".
  *
  * @author Andy Clark
- *
  * @version $Id: HTMLErrorReporter.java,v 1.4 2005/02/14 03:56:54 andyc Exp $
  */
 public interface HTMLErrorReporter {
@@ -44,13 +43,31 @@ public interface HTMLErrorReporter {
     // HTMLErrorReporter methods
     //
 
-    /** Format message without reporting error. */
+    /**
+     * Format message without reporting error.
+     *
+     * @param key a {@link java.lang.String} object.
+     * @param args an array of {@link java.lang.Object} objects.
+     * @return a {@link java.lang.String} object.
+     */
     public String formatMessage(String key, Object[] args);
 
-    /** Reports a warning. */
+    /**
+     * Reports a warning.
+     *
+     * @param key a {@link java.lang.String} object.
+     * @param args an array of {@link java.lang.Object} objects.
+     * @throws org.apache.xerces.xni.parser.XMLParseException if any.
+     */
     public void reportWarning(String key, Object[] args) throws XMLParseException;
 
-    /** Reports an error. */
+    /**
+     * Reports an error.
+     *
+     * @param key a {@link java.lang.String} object.
+     * @param args an array of {@link java.lang.Object} objects.
+     * @throws org.apache.xerces.xni.parser.XMLParseException if any.
+     */
     public void reportError(String key, Object[] args) throws XMLParseException;
 
 } // interface HTMLErrorReporter

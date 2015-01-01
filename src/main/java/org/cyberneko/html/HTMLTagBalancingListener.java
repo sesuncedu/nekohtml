@@ -24,21 +24,29 @@ import org.apache.xerces.xni.XMLAttributes;
  * {@link org.apache.xerces.xni.XMLDocumentHandler} implementing this interface will get notified of elements discarded
  * by the tag balancer when they:
  * <ul>
- * <li>are configured using {@link HTMLConfiguration}</li>
+ * <li>are configured using {@link org.cyberneko.html.HTMLConfiguration}</li>
  * <li>activate the tag balancing feature</li>
  * </ul>
+ *
  * @author Marc Guillemot
  * @version $Id$
  */
 public interface HTMLTagBalancingListener 
 {
 	/**
-	 * Notifies that the start element has been ignored. 
+	 * Notifies that the start element has been ignored.
+	 *
+	 * @param elem a {@link org.apache.xerces.xni.QName} object.
+	 * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	void ignoredStartElement(QName elem, XMLAttributes attrs, Augmentations augs);
 
 	/**
-	 * Notifies that the end element has been ignored. 
+	 * Notifies that the end element has been ignored.
+	 *
+	 * @param element a {@link org.apache.xerces.xni.QName} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	void ignoredEndElement(QName element, Augmentations augs);
 

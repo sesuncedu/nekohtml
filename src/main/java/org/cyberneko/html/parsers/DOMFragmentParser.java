@@ -62,7 +62,6 @@ import org.xml.sax.SAXParseException;
  * A DOM parser for HTML fragments.
  *
  * @author Andy Clark
- *
  * @version $Id: DOMFragmentParser.java,v 1.8 2005/02/14 03:56:54 andyc Exp $
  */
 public class DOMFragmentParser
@@ -125,7 +124,9 @@ public class DOMFragmentParser
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public DOMFragmentParser() {
         fParserConfiguration = new HTMLConfiguration();
         fParserConfiguration.addRecognizedFeatures(RECOGNIZED_FEATURES);
@@ -138,13 +139,27 @@ public class DOMFragmentParser
     // Public methods
     //
 
-    /** Parses a document fragment. */
+    /**
+     * Parses a document fragment.
+     *
+     * @param systemId a {@link java.lang.String} object.
+     * @param fragment a {@link org.w3c.dom.DocumentFragment} object.
+     * @throws org.xml.sax.SAXException if any.
+     * @throws java.io.IOException if any.
+     */
     public void parse(String systemId, DocumentFragment fragment) 
         throws SAXException, IOException {
         parse(new InputSource(systemId), fragment);
     } // parse(String,DocumentFragment)
 
-    /** Parses a document fragment. */
+    /**
+     * Parses a document fragment.
+     *
+     * @param source a {@link org.xml.sax.InputSource} object.
+     * @param fragment a {@link org.w3c.dom.DocumentFragment} object.
+     * @throws org.xml.sax.SAXException if any.
+     * @throws java.io.IOException if any.
+     */
     public void parse(InputSource source, DocumentFragment fragment) 
         throws SAXException, IOException {
 
@@ -190,7 +205,7 @@ public class DOMFragmentParser
      * handler immediately.</p>
      *
      * @param errorHandler The error handler.
-     * @exception java.lang.NullPointerException If the handler 
+     * @exception java.lang.NullPointerException If the handler
      *            argument is null.
      * @see #getErrorHandler
      */
@@ -230,12 +245,13 @@ public class DOMFragmentParser
      *
      * @param featureId The unique identifier (URI) of the feature.
      * @param state The requested state of the feature (true or false).
-     *
      * @exception SAXNotRecognizedException If the
      *            requested feature is not known.
      * @exception SAXNotSupportedException If the
      *            requested feature is known, but the requested
      *            state is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException if any.
+     * @throws org.xml.sax.SAXNotSupportedException if any.
      */
     public void setFeature(String featureId, boolean state)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -266,6 +282,8 @@ public class DOMFragmentParser
      *            requested feature is not known.
      * @exception SAXNotSupportedException If the
      *            requested feature is known but not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException if any.
+     * @throws org.xml.sax.SAXNotSupportedException if any.
      */
     public boolean getFeature(String featureId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -291,12 +309,13 @@ public class DOMFragmentParser
      * @param propertyId The unique identifier (URI) of the property
      *                   being set.
      * @param value      The value to which the property is being set.
-     *
      * @exception SAXNotRecognizedException If the
      *            requested property is not known.
      * @exception SAXNotSupportedException If the
      *            requested property is known, but the requested
      *            value is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException if any.
+     * @throws org.xml.sax.SAXNotSupportedException if any.
      */
     public void setProperty(String propertyId, Object value)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -327,6 +346,8 @@ public class DOMFragmentParser
      *            requested property is not known.
      * @exception SAXNotSupportedException If the
      *            requested property is known but not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException if any.
+     * @throws org.xml.sax.SAXNotSupportedException if any.
      */
     public Object getProperty(String propertyId)
         throws SAXNotRecognizedException, SAXNotSupportedException {
@@ -353,17 +374,32 @@ public class DOMFragmentParser
     // XMLDocumentHandler methods
     //
 
-    /** Sets the document source. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the document source.
+     */
     public void setDocumentSource(XMLDocumentSource source) {
         fDocumentSource = source;
     } // setDocumentSource(XMLDocumentSource)
 
-    /** Returns the document source. */
+    /**
+     * Returns the document source.
+     *
+     * @return a {@link org.apache.xerces.xni.parser.XMLDocumentSource} object.
+     */
     public XMLDocumentSource getDocumentSource() {
         return fDocumentSource;
     } // getDocumentSource():XMLDocumentSource
 
-    /** Start document. */
+    /**
+     * Start document.
+     *
+     * @param locator a {@link org.apache.xerces.xni.XMLLocator} object.
+     * @param encoding a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void startDocument(XMLLocator locator, String encoding,
                               Augmentations augs) throws XNIException {
         startDocument(locator, encoding, null, augs);
@@ -371,25 +407,41 @@ public class DOMFragmentParser
 
     // since Xerces 2.2.0
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding,
                               NamespaceContext nscontext,
                               Augmentations augs) throws XNIException {
         fInCDATASection = false;
     } // startDocument(XMLLocator,String,NamespaceContext,Augmentations)
 
-    /** XML declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * XML declaration.
+     */
     public void xmlDecl(String version, String encoding,
                         String standalone, Augmentations augs)
         throws XNIException {
     } // xmlDecl(String,String,String,Augmentations)
 
-    /** Document type declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * Document type declaration.
+     */
     public void doctypeDecl(String root, String pubid, String sysid,
                             Augmentations augs) throws XNIException {
     } // doctypeDecl(String,String,String,Augmentations)
 
-    /** Processing instruction. */
+    /**
+     * {@inheritDoc}
+     *
+     * Processing instruction.
+     */
     public void processingInstruction(final String target, final XMLString data,
     		final Augmentations augs)
         throws XNIException {
@@ -401,24 +453,45 @@ public class DOMFragmentParser
     	}
     } // processingInstruction(String,XMLString,Augmentations)
 
-    /** Comment. */
+    /**
+     * {@inheritDoc}
+     *
+     * Comment.
+     */
     public void comment(XMLString text, Augmentations augs)
         throws XNIException {
         Comment comment = fDocument.createComment(text.toString());
         fCurrentNode.appendChild(comment);
     } // comment(XMLString,Augmentations)
 
-    /** Start prefix mapping. @deprecated Since Xerces 2.2.0. */
+    /**
+     * Start prefix mapping. @deprecated Since Xerces 2.2.0.
+     *
+     * @param prefix a {@link java.lang.String} object.
+     * @param uri a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void startPrefixMapping(String prefix, String uri,
                                    Augmentations augs) throws XNIException {
     } // startPrefixMapping(String,String,Augmentations)
 
-    /** End prefix mapping. @deprecated Since Xerces 2.2.0. */
+    /**
+     * End prefix mapping. @deprecated Since Xerces 2.2.0.
+     *
+     * @param prefix a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void endPrefixMapping(String prefix, Augmentations augs)
         throws XNIException {
     } // endPrefixMapping(String,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         Element elementNode = fDocument.createElement(element.rawname);
@@ -434,14 +507,22 @@ public class DOMFragmentParser
         fCurrentNode = elementNode;
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         startElement(element, attrs, augs);
         endElement(element, augs);
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
-    /** Characters. */
+    /**
+     * {@inheritDoc}
+     *
+     * Characters.
+     */
     public void characters(XMLString text, Augmentations augs)
         throws XNIException {
 
@@ -470,13 +551,21 @@ public class DOMFragmentParser
 
     } // characters(XMLString,Augmentations)
 
-    /** Ignorable whitespace. */
+    /**
+     * {@inheritDoc}
+     *
+     * Ignorable whitespace.
+     */
     public void ignorableWhitespace(XMLString text, Augmentations augs)
         throws XNIException {
         characters(text, augs);
     } // ignorableWhitespace(XMLString,Augmentations)
 
-    /** Start general entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start general entity.
+     */
     public void startGeneralEntity(String name, XMLResourceIdentifier id,
                                    String encoding, Augmentations augs)
         throws XNIException {
@@ -485,34 +574,58 @@ public class DOMFragmentParser
         fCurrentNode = entityRef;
     } // startGeneralEntity(String,XMLResourceIdentifier,String,Augmentations)
 
-    /** Text declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * Text declaration.
+     */
     public void textDecl(String version, String encoding,
                          Augmentations augs) throws XNIException {
     } // textDecl(String,String,Augmentations)
 
-    /** End general entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * End general entity.
+     */
     public void endGeneralEntity(String name, Augmentations augs)
         throws XNIException {
         fCurrentNode = fCurrentNode.getParentNode();
     } // endGeneralEntity(String,Augmentations)
 
-    /** Start CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start CDATA section.
+     */
     public void startCDATA(Augmentations augs) throws XNIException {
         fInCDATASection = true;
     } // startCDATA(Augmentations)
 
-    /** End CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * End CDATA section.
+     */
     public void endCDATA(Augmentations augs) throws XNIException {
         fInCDATASection = false;
     } // endCDATA(Augmentations)
 
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(QName element, Augmentations augs)
         throws XNIException {
         fCurrentNode = fCurrentNode.getParentNode();
     } // endElement(QName,Augmentations)
 
-    /** End document. */
+    /**
+     * {@inheritDoc}
+     *
+     * End document.
+     */
     public void endDocument(Augmentations augs) throws XNIException {
     } // endDocument(Augmentations)
 

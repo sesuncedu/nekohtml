@@ -34,7 +34,7 @@ import java.io.*;
  * of the script.
  * <p>
  * This particular example defines a new script language called "NekoHTML"
- * script that is a tiny subset of the NSGMLS format. The following table 
+ * script that is a tiny subset of the NSGMLS format. The following table
  * enumerates the NSGMLS features supported by this script language:
  * <table border='1' cellspacing='0' cellpadding='3' summary="Suported features">
  * <tr><th>(<i>name</i><td>A start element with the specified <i>name</i>.</td></tr>
@@ -55,12 +55,12 @@ import java.io.*;
  * <pre>
  * &lt;H1&gt;Header&lt;/H1&gt;
  * </pre>
- * as seen by document handler registered with the parser, when processed 
+ * as seen by document handler registered with the parser, when processed
  * by this filter.
  *
  * @author Andy Clark
- *
  * @version $Id: Script.java,v 1.3 2004/02/19 20:00:17 andyc Exp $
+ * @since 1.9.22
  */
 public class Script
     extends DefaultFilter {
@@ -98,7 +98,11 @@ public class Script
     // Constructors
     //
 
-    /** Constructs a script object with the specified configuration. */
+    /**
+     * Constructs a script object with the specified configuration.
+     *
+     * @param config a {@link org.cyberneko.html.HTMLConfiguration} object.
+     */
     public Script(HTMLConfiguration config) {
         fConfiguration = config;
     } // <init>(HTMLConfiguration)
@@ -107,7 +111,11 @@ public class Script
     // XMLDocumentHandler methods
     //
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding, Augmentations augs) 
         throws XNIException {
         fBuffer = null;
@@ -116,7 +124,11 @@ public class Script
         super.startDocument(locator, encoding, augs);
     } // startDocument(XMLLocator,String,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(QName element, XMLAttributes attrs, Augmentations augs)
         throws XNIException {
         if (element.rawname.equalsIgnoreCase("script") && attrs != null) {
@@ -129,7 +141,11 @@ public class Script
         super.startElement(element, attrs, augs);
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(QName element, XMLAttributes attrs, Augmentations augs)
         throws XNIException {
         if (element.rawname.equalsIgnoreCase("script") && attrs != null) {
@@ -141,7 +157,11 @@ public class Script
         super.emptyElement(element, attrs, augs);
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
-    /** Characters. */
+    /**
+     * {@inheritDoc}
+     *
+     * Characters.
+     */
     public void characters(XMLString text, Augmentations augs)
         throws XNIException {
         if (fBuffer != null) {
@@ -152,7 +172,11 @@ public class Script
         }
     } // characters(XMLString,Augmentations)
 
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(QName element, Augmentations augs) throws XNIException {
         if (fBuffer != null) {
             try {
@@ -211,7 +235,12 @@ public class Script
     // MAIN
     //
 
-    /** Main. */
+    /**
+     * Main.
+     *
+     * @param argv an array of {@link java.lang.String} objects.
+     * @throws java.lang.Exception if any.
+     */
     public static void main(String[] argv) throws Exception {
         HTMLConfiguration parser = new HTMLConfiguration();
         parser.setFeature(AUGMENTATIONS, true);

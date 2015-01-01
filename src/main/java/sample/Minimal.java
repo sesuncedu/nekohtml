@@ -31,6 +31,8 @@ import org.apache.xerces.xni.parser.XMLInputSource;
  * Xerces Native Interface (XNI).
  *
  * @author Andy Clark
+ * @version $Id: $Id
+ * @since 1.9.22
  */
 public class Minimal extends DefaultFilter {
 
@@ -38,6 +40,12 @@ public class Minimal extends DefaultFilter {
 	// MAIN
 	//
 	
+	/**
+	 * <p>main.</p>
+	 *
+	 * @param argv an array of {@link java.lang.String} objects.
+	 * @throws java.lang.Exception if any.
+	 */
 	public static void main(String[] argv) throws Exception {
 		XMLParserConfiguration parser = new HTMLConfiguration();
 		parser.setDocumentHandler(new Minimal());
@@ -51,9 +59,11 @@ public class Minimal extends DefaultFilter {
 	// XMLDocumentHandler methods
 	//
 	
+	/** {@inheritDoc} */
 	public void startElement(QName element, XMLAttributes attrs, Augmentations augs) {
 		System.out.println("("+element.rawname);
 	}
+	/** {@inheritDoc} */
 	public void endElement(QName element, Augmentations augs) {
 		System.out.println(")"+element.rawname);
 	}

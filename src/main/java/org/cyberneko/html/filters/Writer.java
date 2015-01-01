@@ -57,7 +57,6 @@ import org.cyberneko.html.HTMLEntities;
  * stage in the pipeline.
  *
  * @author Andy Clark
- *
  * @version $Id: Writer.java,v 1.7 2005/02/14 04:01:33 andyc Exp $
  */
 public class Writer 
@@ -113,7 +112,9 @@ public class Writer
     // Constructors
     //
 
-    /** Constructs a writer filter that prints to standard out. */
+    /**
+     * Constructs a writer filter that prints to standard out.
+     */
     public Writer() {
         // Note: UTF-8 should *always* be a supported encoding. Although,
         //       I've heard of the old M$ JVM not supporting it! Amazing. -Ac
@@ -133,6 +134,7 @@ public class Writer
      * @param outputStream The output stream to write to.
      * @param encoding The encoding to be used for the output. The encoding name
      *                 should be an official IANA encoding name.
+     * @throws java.io.UnsupportedEncodingException if any.
      */
     public Writer(OutputStream outputStream, String encoding) 
         throws UnsupportedEncodingException {
@@ -163,7 +165,11 @@ public class Writer
 
     // since Xerces-J 2.2.0
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding, 
                               NamespaceContext nscontext, Augmentations augs)
         throws XNIException {
@@ -177,13 +183,21 @@ public class Writer
 
     // old methods
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding, Augmentations augs)
         throws XNIException {
         startDocument(locator, encoding, null, augs);
     } // startDocument(XMLLocator,String,Augmentations)
 
-    /** Comment. */
+    /**
+     * {@inheritDoc}
+     *
+     * Comment.
+     */
     public void comment(XMLString text, Augmentations augs) 
         throws XNIException {
         if (fSeenRootElement && fElementDepth <= 0) {
@@ -198,7 +212,11 @@ public class Writer
         fPrinter.flush();
     } // comment(XMLString,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
         fSeenRootElement = true;
@@ -208,7 +226,11 @@ public class Writer
         super.startElement(element, attributes, augs);
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs)
         throws XNIException {
         fSeenRootElement = true;
@@ -216,7 +238,11 @@ public class Writer
         super.emptyElement(element, attributes, augs);
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
-    /** Characters. */
+    /**
+     * {@inheritDoc}
+     *
+     * Characters.
+     */
     public void characters(XMLString text, Augmentations augs) 
         throws XNIException {
         if (fPrintChars) {
@@ -225,7 +251,11 @@ public class Writer
         super.characters(text, augs);
     } // characters(XMLString,Augmentations)
 
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(QName element, Augmentations augs)
         throws XNIException {
         fElementDepth--;
@@ -250,7 +280,11 @@ public class Writer
         super.endElement(element, augs);
     } // endElement(QName,Augmentations)
 
-    /** Start general entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start general entity.
+     */
     public void startGeneralEntity(String name, XMLResourceIdentifier id, String encoding, Augmentations augs)
         throws XNIException {
         fPrintChars = false;
@@ -273,7 +307,11 @@ public class Writer
         super.startGeneralEntity(name, id, encoding, augs);
     } // startGeneralEntity(String,XMLResourceIdentifier,String,Augmentations)
 
-    /** End general entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * End general entity.
+     */
     public void endGeneralEntity(String name, Augmentations augs)
         throws XNIException {
         fPrintChars = true;
@@ -284,7 +322,11 @@ public class Writer
     // Protected methods
     //
 
-    /** Print attribute value. */
+    /**
+     * Print attribute value.
+     *
+     * @param text a {@link java.lang.String} object.
+     */
     protected void printAttributeValue(String text) {
         int length = text.length();
         for (int j = 0; j < length; j++) {
@@ -299,7 +341,12 @@ public class Writer
         fPrinter.flush();
     } // printAttributeValue(String)
 
-    /** Print characters. */
+    /**
+     * Print characters.
+     *
+     * @param text a {@link org.apache.xerces.xni.XMLString} object.
+     * @param normalize a boolean.
+     */
     protected void printCharacters(XMLString text, boolean normalize) {
         if (normalize) {
             for (int i = 0; i < text.length; i++) {
@@ -327,7 +374,12 @@ public class Writer
         fPrinter.flush();
     } // printCharacters(XMLString,boolean)
 
-    /** Print start element. */
+    /**
+     * Print start element.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     * @param attributes a {@link org.apache.xerces.xni.XMLAttributes} object.
+     */
     protected void printStartElement(QName element, XMLAttributes attributes) {
 
         // modify META[@http-equiv='content-type']/@content value
@@ -389,7 +441,11 @@ public class Writer
 
     } // printStartElement(QName,XMLAttributes)
 
-    /** Print end element. */
+    /**
+     * Print end element.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     */
     protected void printEndElement(QName element) {
         fPrinter.print("</");
         fPrinter.print(element.rawname);
@@ -397,7 +453,11 @@ public class Writer
         fPrinter.flush();
     } // printEndElement(QName)
 
-    /** Print entity. */
+    /**
+     * Print entity.
+     *
+     * @param name a {@link java.lang.String} object.
+     */
     protected void printEntity(String name) {
         fPrinter.print('&');
         fPrinter.print(name);
@@ -409,7 +469,12 @@ public class Writer
     // MAIN
     //
 
-    /** Main. */
+    /**
+     * Main.
+     *
+     * @param argv an array of {@link java.lang.String} objects.
+     * @throws java.lang.Exception if any.
+     */
     public static void main(String[] argv) throws Exception {
         if (argv.length == 0) {
             printUsage();

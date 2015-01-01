@@ -22,7 +22,6 @@ package org.cyberneko.html;
  * @author Andy Clark
  * @author Ahmed Ashour
  * @author Marc Guillemot
- *
  * @version $Id: HTMLElements.java,v 1.12 2005/02/14 07:16:59 andyc Exp $
  */
 public class HTMLElements {
@@ -37,124 +36,243 @@ public class HTMLElements {
     //       sequence. The parent and closes references depends on 
     //       this assumption. -Ac
 
+    /** Constant <code>A=0</code> */
     public static final short A = 0;
+    /** Constant <code>ABBR=A+1</code> */
     public static final short ABBR = A+1;
+    /** Constant <code>ACRONYM=ABBR+1</code> */
     public static final short ACRONYM = ABBR+1;
+    /** Constant <code>ADDRESS=ACRONYM+1</code> */
     public static final short ADDRESS = ACRONYM+1;
+    /** Constant <code>APPLET=ADDRESS+1</code> */
     public static final short APPLET = ADDRESS+1;
+    /** Constant <code>AREA=APPLET+1</code> */
     public static final short AREA = APPLET+1;
+    /** Constant <code>B=AREA+1</code> */
     public static final short B = AREA+1;
+    /** Constant <code>BASE=B+1</code> */
     public static final short BASE = B+1;
+    /** Constant <code>BASEFONT=BASE+1</code> */
     public static final short BASEFONT = BASE+1;
+    /** Constant <code>BDO=BASEFONT+1</code> */
     public static final short BDO = BASEFONT+1;
+    /** Constant <code>BGSOUND=BDO+1</code> */
     public static final short BGSOUND = BDO+1;
+    /** Constant <code>BIG=BGSOUND+1</code> */
     public static final short BIG = BGSOUND+1;
+    /** Constant <code>BLINK=BIG+1</code> */
     public static final short BLINK = BIG+1;
+    /** Constant <code>BLOCKQUOTE=BLINK+1</code> */
     public static final short BLOCKQUOTE = BLINK+1;
+    /** Constant <code>BODY=BLOCKQUOTE+1</code> */
     public static final short BODY = BLOCKQUOTE+1;
+    /** Constant <code>BR=BODY+1</code> */
     public static final short BR = BODY+1;
+    /** Constant <code>BUTTON=BR+1</code> */
     public static final short BUTTON = BR+1;
+    /** Constant <code>CAPTION=BUTTON+1</code> */
     public static final short CAPTION = BUTTON+1;
+    /** Constant <code>CENTER=CAPTION+1</code> */
     public static final short CENTER = CAPTION+1;
+    /** Constant <code>CITE=CENTER+1</code> */
     public static final short CITE = CENTER+1;
+    /** Constant <code>CODE=CITE+1</code> */
     public static final short CODE = CITE+1;
+    /** Constant <code>COL=CODE+1</code> */
     public static final short COL = CODE+1;
+    /** Constant <code>COLGROUP=COL+1</code> */
     public static final short COLGROUP = COL+1;
+    /** Constant <code>COMMENT=COLGROUP+1</code> */
     public static final short COMMENT = COLGROUP+1;
+    /** Constant <code>DEL=COMMENT+1</code> */
     public static final short DEL = COMMENT+1;
+    /** Constant <code>DFN=DEL+1</code> */
     public static final short DFN = DEL+1;
+    /** Constant <code>DIR=DFN+1</code> */
     public static final short DIR = DFN+1;
+    /** Constant <code>DIV=DIR+1</code> */
     public static final short DIV = DIR+1;
+    /** Constant <code>DD=DIV+1</code> */
     public static final short DD = DIV+1;
+    /** Constant <code>DL=DD+1</code> */
     public static final short DL = DD+1;
+    /** Constant <code>DT=DL+1</code> */
     public static final short DT = DL+1;
+    /** Constant <code>EM=DT+1</code> */
     public static final short EM = DT+1;
+    /** Constant <code>EMBED=EM+1</code> */
     public static final short EMBED = EM+1;
+    /** Constant <code>FIELDSET=EMBED+1</code> */
     public static final short FIELDSET = EMBED+1;
+    /** Constant <code>FONT=FIELDSET+1</code> */
     public static final short FONT = FIELDSET+1;
+    /** Constant <code>FORM=FONT+1</code> */
     public static final short FORM = FONT+1;
+    /** Constant <code>FRAME=FORM+1</code> */
     public static final short FRAME = FORM+1;
+    /** Constant <code>FRAMESET=FRAME+1</code> */
     public static final short FRAMESET = FRAME+1;
+    /** Constant <code>H1=FRAMESET+1</code> */
     public static final short H1 = FRAMESET+1;
+    /** Constant <code>H2=H1+1</code> */
     public static final short H2 = H1+1;
+    /** Constant <code>H3=H2+1</code> */
     public static final short H3 = H2+1;
+    /** Constant <code>H4=H3+1</code> */
     public static final short H4 = H3+1;
+    /** Constant <code>H5=H4+1</code> */
     public static final short H5 = H4+1;
+    /** Constant <code>H6=H5+1</code> */
     public static final short H6 = H5+1;
+    /** Constant <code>HEAD=H6+1</code> */
     public static final short HEAD = H6+1;
+    /** Constant <code>HR=HEAD+1</code> */
     public static final short HR = HEAD+1;
+    /** Constant <code>HTML=HR+1</code> */
     public static final short HTML = HR+1;
+    /** Constant <code>I=HTML+1</code> */
     public static final short I = HTML+1;
+    /** Constant <code>IFRAME=I+1</code> */
     public static final short IFRAME = I+1;
+    /** Constant <code>ILAYER=IFRAME+1</code> */
     public static final short ILAYER = IFRAME+1;
+    /** Constant <code>IMG=ILAYER+1</code> */
     public static final short IMG = ILAYER+1;
+    /** Constant <code>INPUT=IMG+1</code> */
     public static final short INPUT = IMG+1;
+    /** Constant <code>INS=INPUT+1</code> */
     public static final short INS = INPUT+1;
+    /** Constant <code>ISINDEX=INS+1</code> */
     public static final short ISINDEX = INS+1;
+    /** Constant <code>KBD=ISINDEX+1</code> */
     public static final short KBD = ISINDEX+1;
+    /** Constant <code>KEYGEN=KBD+1</code> */
     public static final short KEYGEN = KBD+1;
+    /** Constant <code>LABEL=KEYGEN+1</code> */
     public static final short LABEL = KEYGEN+1;
+    /** Constant <code>LAYER=LABEL+1</code> */
     public static final short LAYER = LABEL+1;
+    /** Constant <code>LEGEND=LAYER+1</code> */
     public static final short LEGEND = LAYER+1;
+    /** Constant <code>LI=LEGEND+1</code> */
     public static final short LI = LEGEND+1;
+    /** Constant <code>LINK=LI+1</code> */
     public static final short LINK = LI+1;
+    /** Constant <code>LISTING=LINK+1</code> */
     public static final short LISTING = LINK+1;
+    /** Constant <code>MAP=LISTING+1</code> */
     public static final short MAP = LISTING+1;
+    /** Constant <code>MARQUEE=MAP+1</code> */
     public static final short MARQUEE = MAP+1;
+    /** Constant <code>MENU=MARQUEE+1</code> */
     public static final short MENU = MARQUEE+1;
+    /** Constant <code>META=MENU+1</code> */
     public static final short META = MENU+1;
+    /** Constant <code>MULTICOL=META+1</code> */
     public static final short MULTICOL = META+1;
+    /** Constant <code>NEXTID=MULTICOL+1</code> */
     public static final short NEXTID = MULTICOL+1;
+    /** Constant <code>NOBR=NEXTID+1</code> */
     public static final short NOBR = NEXTID+1;
+    /** Constant <code>NOEMBED=NOBR+1</code> */
     public static final short NOEMBED = NOBR+1;
+    /** Constant <code>NOFRAMES=NOEMBED+1</code> */
     public static final short NOFRAMES = NOEMBED+1;
+    /** Constant <code>NOLAYER=NOFRAMES+1</code> */
     public static final short NOLAYER = NOFRAMES+1;
+    /** Constant <code>NOSCRIPT=NOLAYER+1</code> */
     public static final short NOSCRIPT = NOLAYER+1;
+    /** Constant <code>OBJECT=NOSCRIPT+1</code> */
     public static final short OBJECT = NOSCRIPT+1;
+    /** Constant <code>OL=OBJECT+1</code> */
     public static final short OL = OBJECT+1;
+    /** Constant <code>OPTION=OL+1</code> */
     public static final short OPTION = OL+1;
+    /** Constant <code>OPTGROUP=OPTION+1</code> */
     public static final short OPTGROUP = OPTION+1;
+    /** Constant <code>P=OPTGROUP+1</code> */
     public static final short P = OPTGROUP+1;
+    /** Constant <code>PARAM=P+1</code> */
     public static final short PARAM = P+1;
+    /** Constant <code>PLAINTEXT=PARAM+1</code> */
     public static final short PLAINTEXT = PARAM+1;
+    /** Constant <code>PRE=PLAINTEXT+1</code> */
     public static final short PRE = PLAINTEXT+1;
+    /** Constant <code>Q=PRE+1</code> */
     public static final short Q = PRE+1;
+    /** Constant <code>RB=Q+1</code> */
     public static final short RB = Q+1;
+    /** Constant <code>RBC=RB+1</code> */
     public static final short RBC = RB+1;
+    /** Constant <code>RP=RBC+1</code> */
     public static final short RP = RBC+1;
+    /** Constant <code>RT=RP+1</code> */
     public static final short RT = RP+1;
+    /** Constant <code>RTC=RT+1</code> */
     public static final short RTC = RT+1;
+    /** Constant <code>RUBY=RTC+1</code> */
     public static final short RUBY = RTC+1;
+    /** Constant <code>S=RUBY+1</code> */
     public static final short S = RUBY+1;
+    /** Constant <code>SAMP=S+1</code> */
     public static final short SAMP = S+1;
+    /** Constant <code>SCRIPT=SAMP+1</code> */
     public static final short SCRIPT = SAMP+1;
+    /** Constant <code>SECTION=SCRIPT+1</code> */
     public static final short SECTION = SCRIPT+1;
+    /** Constant <code>SELECT=SECTION+1</code> */
     public static final short SELECT = SECTION+1;
+    /** Constant <code>SMALL=SELECT+1</code> */
     public static final short SMALL = SELECT+1;
+    /** Constant <code>SOUND=SMALL+1</code> */
     public static final short SOUND = SMALL+1;
+    /** Constant <code>SPACER=SOUND+1</code> */
     public static final short SPACER = SOUND+1;
+    /** Constant <code>SPAN=SPACER+1</code> */
     public static final short SPAN = SPACER+1;
+    /** Constant <code>STRIKE=SPAN+1</code> */
     public static final short STRIKE = SPAN+1;
+    /** Constant <code>STRONG=STRIKE+1</code> */
     public static final short STRONG = STRIKE+1;
+    /** Constant <code>STYLE=STRONG+1</code> */
     public static final short STYLE = STRONG+1;
+    /** Constant <code>SUB=STYLE+1</code> */
     public static final short SUB = STYLE+1;
+    /** Constant <code>SUP=SUB+1</code> */
     public static final short SUP = SUB+1;
+    /** Constant <code>TABLE=SUP+1</code> */
     public static final short TABLE = SUP+1;
+    /** Constant <code>TBODY=TABLE+1</code> */
     public static final short TBODY = TABLE+1;
+    /** Constant <code>TD=TBODY+1</code> */
     public static final short TD = TBODY+1;
+    /** Constant <code>TEXTAREA=TD+1</code> */
     public static final short TEXTAREA = TD+1;
+    /** Constant <code>TFOOT=TEXTAREA+1</code> */
     public static final short TFOOT = TEXTAREA+1;
+    /** Constant <code>TH=TFOOT+1</code> */
     public static final short TH = TFOOT+1;
+    /** Constant <code>THEAD=TH+1</code> */
     public static final short THEAD = TH+1;
+    /** Constant <code>TITLE=THEAD+1</code> */
     public static final short TITLE = THEAD+1;
+    /** Constant <code>TR=TITLE+1</code> */
     public static final short TR = TITLE+1;
+    /** Constant <code>TT=TR+1</code> */
     public static final short TT = TR+1;
+    /** Constant <code>U=TT+1</code> */
     public static final short U = TT+1;
+    /** Constant <code>UL=U+1</code> */
     public static final short UL = U+1;
+    /** Constant <code>VAR=UL+1</code> */
     public static final short VAR = UL+1;
+    /** Constant <code>WBR=VAR+1</code> */
     public static final short WBR = VAR+1;
+    /** Constant <code>XML=WBR+1</code> */
     public static final short XML = WBR+1;
+    /** Constant <code>XMP=XML+1</code> */
     public static final short XMP = XML+1;
+    /** Constant <code>UNKNOWN=XMP+1</code> */
     public static final short UNKNOWN = XMP+1;
 
     // information
@@ -501,6 +619,7 @@ public class HTMLElements {
      * Returns the element information for the specified element code.
      *
      * @param code The element code.
+     * @return a {@link org.cyberneko.html.HTMLElements.Element} object.
      */
     public static final Element getElement(final short code) {
         return ELEMENTS.data[code];
@@ -510,6 +629,7 @@ public class HTMLElements {
      * Returns the element information for the specified element name.
      *
      * @param ename The element name.
+     * @return a {@link org.cyberneko.html.HTMLElements.Element} object.
      */
     public static final Element getElement(final String ename) {
         Element element = getElement(ename, NO_SUCH_ELEMENT);
@@ -526,6 +646,7 @@ public class HTMLElements {
      *
      * @param ename The element name.
      * @param element The default element to return if not found.
+     * @return a {@link org.cyberneko.html.HTMLElements.Element} object.
      */
     public static final Element getElement(final String ename, final Element element) {
 
@@ -630,6 +751,7 @@ public class HTMLElements {
          * @param name The element name.
          * @param flags Informational flags
          * @param parent Natural closing parent name.
+         * @param bounds Boudning element
          * @param closes List of elements this element can close.
          */
         public Element(final short code, final String name, final int flags, 
@@ -658,6 +780,7 @@ public class HTMLElements {
          * @param name The element name.
          * @param flags Informational flags
          * @param parents Natural closing parent names.
+         * @param bounds Bounding element codes
          * @param closes List of elements this element can close.
          */
         public Element(final short code, final String name, final int flags, 
@@ -675,28 +798,28 @@ public class HTMLElements {
         // Public methods
         //
 
-        /** Returns true if this element is an inline element. */
+        /** @return true if this element is an inline element. */
         public final boolean isInline() {
             return (flags & INLINE) != 0;
         } // isInline():boolean
 
-        /** Returns true if this element is a block element. */
+        /** @return true if this element is a block element. */
         public final boolean isBlock() {
             return (flags & BLOCK) != 0;
         } // isBlock():boolean
 
-        /** Returns true if this element is an empty element. */
+        /** @return true if this element is an empty element. */
         public final boolean isEmpty() {
             return (flags & EMPTY) != 0;
         } // isEmpty():boolean
 
-        /** Returns true if this element is a container element. */
+        /** @return true if this element is a container element. */
         public final boolean isContainer() {
             return (flags & CONTAINER) != 0;
         } // isContainer():boolean
 
         /** 
-         * Returns true if this element is special -- if its content
+         * @return true if this element is special -- if its content
          * should be parsed ignoring markup.
          */
         public final boolean isSpecial() {
@@ -704,7 +827,7 @@ public class HTMLElements {
         } // isSpecial():boolean
 
         /**
-         * Returns true if this element can close the specified Element.
+         * @return true if this element can close the specified Element.
          *
          * @param tag The element.
          */
@@ -774,7 +897,8 @@ public class HTMLElements {
         // Public methods
         //
 
-        /** Adds an element to list, resizing if necessary. */
+        /** Adds an element to list, resizing if necessary.
+         * @param element element to add */
         public void addElement(final Element element) {
             if (size == data.length) {
                 Element[] newarray = new Element[size + 20];

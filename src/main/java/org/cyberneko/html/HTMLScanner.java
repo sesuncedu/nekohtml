@@ -32,8 +32,8 @@ import java.util.Stack;
 
 /**
  * A simple HTML scanner. This scanner makes no attempt to balance tags
- * or fix other problems in the source document &mdash; it just scans what 
- * it can and generates XNI document "events", ignoring errors of all 
+ * or fix other problems in the source document &mdash; it just scans what
+ * it can and generates XNI document "events", ignoring errors of all
  * kinds.
  * <p>
  * This component recognizes the following features:
@@ -69,11 +69,9 @@ import java.util.Stack;
  *
  * @see HTMLElements
  * @see HTMLEntities
- *
  * @author Andy Clark
  * @author Marc Guillemot
  * @author Ahmed Ashour
- *
  * @version $Id: HTMLScanner.java,v 1.19 2005/06/14 05:52:37 andyc Exp $
  */
 public class HTMLScanner 
@@ -520,9 +518,9 @@ public class HTMLScanner
     // Public methods
     //
 
-    /** 
-     * Pushes an input source onto the current entity stack. This 
-     * enables the scanner to transparently scan new content (e.g. 
+    /**
+     * Pushes an input source onto the current entity stack. This
+     * enables the scanner to transparently scan new content (e.g.
      * the output written by an embedded script). At the end of the
      * current entity, the scanner returns where it left off at the
      * time this entity source was pushed.
@@ -561,8 +559,8 @@ public class HTMLScanner
         return reader;
 	}
 
-	/** 
-     * Immediately evaluates an input source and add the new content (e.g. 
+    /**
+     * Immediately evaluates an input source and add the new content (e.g.
      * the output written by an embedded script).
      *
      * @param inputSource The new input source to start evaluating.
@@ -629,47 +627,83 @@ public class HTMLScanner
     // XMLLocator methods
     //
 
-    /** Returns the encoding. */
+    /**
+     * Returns the encoding.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getEncoding() {
         return fCurrentEntity != null ? fCurrentEntity.encoding : null;
     } // getEncoding():String
 
-    /** Returns the public identifier. */
+    /**
+     * Returns the public identifier.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getPublicId() { 
         return fCurrentEntity != null ? fCurrentEntity.publicId : null; 
     } // getPublicId():String
 
-    /** Returns the base system identifier. */
+    /**
+     * Returns the base system identifier.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getBaseSystemId() { 
         return fCurrentEntity != null ? fCurrentEntity.baseSystemId : null; 
     } // getBaseSystemId():String
 
-    /** Returns the literal system identifier. */
+    /**
+     * Returns the literal system identifier.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getLiteralSystemId() { 
         return fCurrentEntity != null ? fCurrentEntity.literalSystemId : null; 
     } // getLiteralSystemId():String
 
-    /** Returns the expanded system identifier. */
+    /**
+     * Returns the expanded system identifier.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getExpandedSystemId() { 
         return fCurrentEntity != null ? fCurrentEntity.expandedSystemId : null; 
     } // getExpandedSystemId():String
 
-    /** Returns the current line number. */
+    /**
+     * Returns the current line number.
+     *
+     * @return a int.
+     */
     public int getLineNumber() { 
         return fCurrentEntity != null ? fCurrentEntity.getLineNumber() : -1; 
     } // getLineNumber():int
 
-    /** Returns the current column number. */
+    /**
+     * Returns the current column number.
+     *
+     * @return a int.
+     */
     public int getColumnNumber() { 
         return fCurrentEntity != null ? fCurrentEntity.getColumnNumber() : -1; 
     } // getColumnNumber():int
     
-    /** Returns the XML version. */
+    /**
+     * Returns the XML version.
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public String getXMLVersion() {
 		return fCurrentEntity != null ? fCurrentEntity.version : null; 
     } // getXMLVersion():String
     
-    /** Returns the character offset. */
+    /**
+     * Returns the character offset.
+     *
+     * @return a int.
+     */
     public int getCharacterOffset() {
 		return fCurrentEntity != null ? fCurrentEntity.getCharacterOffset() : -1; 
     } // getCharacterOffset():int
@@ -678,7 +712,11 @@ public class HTMLScanner
     // HTMLComponent methods
     //
 
-    /** Returns the default state for a feature. */
+    /**
+     * {@inheritDoc}
+     *
+     * Returns the default state for a feature.
+     */
     public Boolean getFeatureDefault(String featureId) {
         int length = RECOGNIZED_FEATURES != null ? RECOGNIZED_FEATURES.length : 0;
         for (int i = 0; i < length; i++) {
@@ -689,7 +727,11 @@ public class HTMLScanner
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** Returns the default state for a property. */
+    /**
+     * {@inheritDoc}
+     *
+     * Returns the default state for a property.
+     */
     public Object getPropertyDefault(String propertyId) {
         int length = RECOGNIZED_PROPERTIES != null ? RECOGNIZED_PROPERTIES.length : 0;
         for (int i = 0; i < length; i++) {
@@ -704,17 +746,29 @@ public class HTMLScanner
     // XMLComponent methods
     //
 
-    /** Returns recognized features. */
+    /**
+     * Returns recognized features.
+     *
+     * @return an array of {@link java.lang.String} objects.
+     */
     public String[] getRecognizedFeatures() {
         return RECOGNIZED_FEATURES;
     } // getRecognizedFeatures():String[]
 
-    /** Returns recognized properties. */
+    /**
+     * Returns recognized properties.
+     *
+     * @return an array of {@link java.lang.String} objects.
+     */
     public String[] getRecognizedProperties() {
         return RECOGNIZED_PROPERTIES;
     } // getRecognizedProperties():String[]
 
-    /** Resets the component. */
+    /**
+     * {@inheritDoc}
+     *
+     * Resets the component.
+     */
     public void reset(XMLComponentManager manager)
         throws XMLConfigurationException {
 
@@ -748,7 +802,11 @@ public class HTMLScanner
     
     } // reset(XMLComponentManager)
 
-    /** Sets a feature. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a feature.
+     */
     public void setFeature(final String featureId, final boolean state) {
 
         if (featureId.equals(AUGMENTATIONS)) { 
@@ -793,7 +851,11 @@ public class HTMLScanner
 
     } // setFeature(String,boolean)
 
-    /** Sets a property. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a property.
+     */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
     
@@ -818,7 +880,11 @@ public class HTMLScanner
     // XMLDocumentScanner methods
     //
 
-    /** Sets the input source. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the input source.
+     */
     public void setInputSource(XMLInputSource source) throws IOException {
 
         // reset state
@@ -895,7 +961,11 @@ public class HTMLScanner
 
     } // setInputSource(XMLInputSource)
 
-    /** Scans the document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Scans the document.
+     */
     public boolean scanDocument(boolean complete) throws XNIException, IOException {
         do {
             if (!fScanner.scan(complete)) {
@@ -905,14 +975,22 @@ public class HTMLScanner
         return true;
     } // scanDocument(boolean):boolean
 
-    /** Sets the document handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the document handler.
+     */
     public void setDocumentHandler(XMLDocumentHandler handler) {
         fDocumentHandler = handler;
     } // setDocumentHandler(XMLDocumentHandler)
 
     // @since Xerces 2.1.0
 
-    /** Returns the document handler. */
+    /**
+     * Returns the document handler.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // getDocumentHandler():XMLDocumentHandler
@@ -921,7 +999,13 @@ public class HTMLScanner
     // Protected static methods
     //
 
-    /** Returns the value of the specified attribute, ignoring case. */
+    /**
+     * Returns the value of the specified attribute, ignoring case.
+     *
+     * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+     * @param aname a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
+     */
     protected static String getValue(XMLAttributes attrs, String aname) {
         int length = attrs != null ? attrs.getLength() : 0;
         for (int i = 0; i < length; i++) {
@@ -939,11 +1023,10 @@ public class HTMLScanner
      * indicates a failure to expand the id.
      *
      * @param systemId The systemId to be expanded.
-     *
      * @return Returns the URI string representing the expanded system
      *         identifier. A null value indicates that the given
      *         system identifier is already expanded.
-     *
+     * @param baseSystemId a {@link java.lang.String} object.
      */
     public static String expandSystemId(String systemId, String baseSystemId) {
 
@@ -1026,7 +1109,6 @@ public class HTMLScanner
      * Fixes a platform dependent filename to standard URI form.
      *
      * @param str The string to fix.
-     *
      * @return Returns the fixed URI string.
      */
     protected static String fixURI(String str) {
@@ -1055,7 +1137,13 @@ public class HTMLScanner
 
     } // fixURI(String):String
 
-    /** Modifies the given name based on the specified mode. */
+    /**
+     * Modifies the given name based on the specified mode.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @param mode a short.
+     * @return a {@link java.lang.String} object.
+     */
     protected static final String modifyName(String name, short mode) {
         switch (mode) {
             case NAMES_UPPERCASE: return name.toUpperCase(Locale.ENGLISH);
@@ -1065,11 +1153,19 @@ public class HTMLScanner
     } // modifyName(String,short):String
 
     /**
-     * Converts HTML names string value to constant value. 
+     * Converts HTML names string value to constant value.
      *
      * @see #NAMES_NO_CHANGE
      * @see #NAMES_LOWERCASE
      * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @param value a {@link java.lang.String} object.
+     * @return a short.
      */
     protected static final short getNamesValue(String value) {
         if (value.equals("lower")) {
@@ -1084,8 +1180,11 @@ public class HTMLScanner
     /**
      * Fixes Microsoft Windows&reg; specific characters.
      * <p>
-     * Details about this common problem can be found at 
+     * Details about this common problem can be found at
      * <a href='http://www.cs.tut.fi/~jkorpela/www/windows-chars.html'>http://www.cs.tut.fi/~jkorpela/www/windows-chars.html</a>
+     *
+     * @param origChar a int.
+     * @return a int.
      */
     protected int fixWindowsCharacter(int origChar) {
         /* PATCH: Asgeir Asgeirsson */
@@ -1123,7 +1222,12 @@ public class HTMLScanner
     //
 
     // i/o
-    /** Reads a single character. */
+    /**
+     * Reads a single character.
+     *
+     * @return a int.
+     * @throws java.io.IOException if any.
+     */
     protected int read() throws IOException {
     	return fCurrentEntity.read();
     }
@@ -1131,7 +1235,11 @@ public class HTMLScanner
 
     // debugging
 
-    /** Sets the scanner. */
+    /**
+     * Sets the scanner.
+     *
+     * @param scanner a {@link org.cyberneko.html.HTMLScanner.Scanner} object.
+     */
     protected void setScanner(Scanner scanner) {
         fScanner = scanner;
         if (DEBUG_SCANNER) {
@@ -1141,7 +1249,11 @@ public class HTMLScanner
         }
     } // setScanner(Scanner)
     
-    /** Sets the scanner state. */
+    /**
+     * Sets the scanner state.
+     *
+     * @param state a short.
+     */
     protected void setScannerState(short state) {
         fScannerState = state;
         if (DEBUG_SCANNER_STATE) {
@@ -1158,7 +1270,11 @@ public class HTMLScanner
 
     // scanning
 
-    /** Scans a DOCTYPE line. */
+    /**
+     * Scans a DOCTYPE line.
+     *
+     * @throws java.io.IOException if any.
+     */
     protected void scanDoctype() throws IOException {
         String root = null;
         String pubid = null;
@@ -1216,7 +1332,12 @@ public class HTMLScanner
 
     } // scanDoctype()
 
-    /** Scans a quoted literal. */
+    /**
+     * Scans a quoted literal.
+     *
+     * @return a {@link java.lang.String} object.
+     * @throws java.io.IOException if any.
+     */
     protected String scanLiteral() throws IOException {
         int quote = fCurrentEntity.read();
         if (quote == '\'' || quote == '"') {
@@ -1253,7 +1374,13 @@ public class HTMLScanner
         return null;
     } // scanLiteral():String
 
-    /** Scans a name. */
+    /**
+     * Scans a name.
+     *
+     * @param strict a boolean.
+     * @return a {@link java.lang.String} object.
+     * @throws java.io.IOException if any.
+     */
     protected String scanName(final boolean strict) throws IOException {
         if (DEBUG_BUFFER) { 
             fCurrentEntity.debugBufferIfNeeded("(scanName: ");
@@ -1297,7 +1424,14 @@ public class HTMLScanner
         return name;
     } // scanName():String
 
-    /** Scans an entity reference. */
+    /**
+     * Scans an entity reference.
+     *
+     * @param str a {@link org.apache.xerces.util.XMLStringBuffer} object.
+     * @param content a boolean.
+     * @return a int.
+     * @throws java.io.IOException if any.
+     */
     protected int scanEntityRef(final XMLStringBuffer str, final boolean content) 
         throws IOException {
         str.clear();
@@ -1431,7 +1565,14 @@ public class HTMLScanner
 
     } // scanEntityRef(XMLStringBuffer,boolean):int
 
-    /** Returns true if the specified text is present and is skipped. */
+    /**
+     * Returns true if the specified text is present and is skipped.
+     *
+     * @param s a {@link java.lang.String} object.
+     * @param caseSensitive a boolean.
+     * @return a boolean.
+     * @throws java.io.IOException if any.
+     */
     protected boolean skip(String s, boolean caseSensitive) throws IOException {
         int length = s != null ? s.length() : 0;
         for (int i = 0; i < length; i++) {
@@ -1456,7 +1597,13 @@ public class HTMLScanner
         return true;
     } // skip(String):boolean
 
-    /** Skips markup. */
+    /**
+     * Skips markup.
+     *
+     * @param balance a boolean.
+     * @return a boolean.
+     * @throws java.io.IOException if any.
+     */
     protected boolean skipMarkup(boolean balance) throws IOException {
         if (DEBUG_BUFFER) { 
             fCurrentEntity.debugBufferIfNeeded("(skipMarkup: ");
@@ -1510,7 +1657,12 @@ public class HTMLScanner
         return slashgt;
     } // skipMarkup():boolean
 
-    /** Skips whitespace. */
+    /**
+     * Skips whitespace.
+     *
+     * @return a boolean.
+     * @throws java.io.IOException if any.
+     */
     protected boolean skipSpaces() throws IOException {
         if (DEBUG_BUFFER) { 
             fCurrentEntity.debugBufferIfNeeded("(skipSpaces: ");
@@ -1540,7 +1692,12 @@ public class HTMLScanner
         return spaces;
     } // skipSpaces()
 
-    /** Skips newlines and returns the number of newlines skipped. */
+    /**
+     * Skips newlines and returns the number of newlines skipped.
+     *
+     * @return a int.
+     * @throws java.io.IOException if any.
+     */
     protected int skipNewlines() throws IOException {
         if (DEBUG_BUFFER) { 
             fCurrentEntity.debugBufferIfNeeded("(skipNewlines: ");
@@ -1600,7 +1757,11 @@ public class HTMLScanner
 
     // infoset utility methods
 
-    /** Returns an augmentations object with a location item added. */
+    /**
+     * Returns an augmentations object with a location item added.
+     *
+     * @return a {@link org.apache.xerces.xni.Augmentations} object.
+     */
     protected final Augmentations locationAugs() {
         HTMLAugmentations augs = null;
         if (fAugmentations) {
@@ -1614,7 +1775,11 @@ public class HTMLScanner
         return augs;
     } // locationAugs():Augmentations
 
-    /** Returns an augmentations object with a synthesized item added. */
+    /**
+     * Returns an augmentations object with a synthesized item added.
+     *
+     * @return a {@link org.apache.xerces.xni.Augmentations} object.
+     */
     protected final Augmentations synthesizedAugs() {
         HTMLAugmentations augs = null;
         if (fAugmentations) {
@@ -1625,7 +1790,11 @@ public class HTMLScanner
         return augs;
     } // synthesizedAugs():Augmentations
 
-    /** Returns an empty resource identifier. */
+    /**
+     * Returns an empty resource identifier.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLResourceIdentifier} object.
+     */
     protected final XMLResourceIdentifier resourceId() {
         /***/
         fResourceId.clear();
@@ -1642,7 +1811,12 @@ public class HTMLScanner
     // Protected static methods
     //
 
-    /** Returns true if the name is a built-in XML general entity reference. */
+    /**
+     * Returns true if the name is a built-in XML general entity reference.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a boolean.
+     */
     protected static boolean builtinXmlRef(String name) {
         return name.equals("amp") || name.equals("lt") || name.equals("gt") ||
                name.equals("quot") || name.equals("apos");
@@ -2171,7 +2345,7 @@ public class HTMLScanner
          * Scans the content of <noscript>: it doesn't get parsed but is considered as plain text
          * when feature {@link HTMLScanner#PARSE_NOSCRIPT_CONTENT} is set to false.
          * @param tagName the tag for which content is scanned (one of "noscript", "noframes", "iframe")
-         * @throws IOException
+         * @throws IOException if an IO error occurs
          */
         private void scanUntilEndTag(final String tagName) throws IOException {
         	final XMLStringBuffer buffer = new XMLStringBuffer();
@@ -2271,6 +2445,7 @@ public class HTMLScanner
          * up to current offset.
          * @param len the number of characters to read
          * @return the read string (length may be smaller if EOF is encountered)
+         * @throws IOException if an IO error occurs
          */
         protected String nextContent(int len) throws IOException {
             final int originalOffset = fCurrentEntity.offset;
@@ -2304,7 +2479,9 @@ public class HTMLScanner
         // Protected methods
         //
 
-        /** Scans characters. */
+        /** Scans characters.
+         * @throws IOException if an IO error occurs
+         */
         protected void scanCharacters() throws IOException {
             if (DEBUG_BUFFER) { 
                 fCurrentEntity.debugBufferIfNeeded("(scanCharacters: ");
@@ -2360,7 +2537,9 @@ public class HTMLScanner
 
         } // scanCharacters()
 
-        /** Scans a CDATA section. */
+        /** Scans a CDATA section.
+         * @throws IOException if an IO error occurs
+         */
         protected void scanCDATA() throws IOException {
             if (DEBUG_BUFFER) { 
                 fCurrentEntity.debugBufferIfNeeded("(scanCDATA: ");
@@ -2413,7 +2592,9 @@ public class HTMLScanner
             }
         } // scanCDATA()
         
-        /** Scans a comment. */
+        /** Scans a comment.
+         * @throws IOException if an IO error occurs
+         */
         protected void scanComment() throws IOException {
             if (DEBUG_BUFFER) { 
                 fCurrentEntity.debugBufferIfNeeded("(scanComment: ");
@@ -2469,7 +2650,11 @@ public class HTMLScanner
             }
         } // scanComment()
 
-        /** Scans markup content. */
+        /** Scans markup content.
+         * @param buffer buffer to scan
+         * @param cend delimiter
+         * @throws IOException if an IO error occurs
+         */
         protected boolean scanMarkupContent(XMLStringBuffer buffer, 
                                             char cend) throws IOException {
             int c = -1;
@@ -3709,7 +3894,12 @@ public class HTMLScanner
 		return string.equals(s);
 	}
 
-     /** Reads a single character, preserving the old buffer content */
+     /**
+      * Reads a single character, preserving the old buffer content
+      *
+      * @return a int.
+      * @throws java.io.IOException if any.
+      */
      protected int readPreservingBufferContent() throws IOException {
          if (DEBUG_BUFFER) { 
              fCurrentEntity.debugBufferIfNeeded("(read: ");

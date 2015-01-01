@@ -24,7 +24,6 @@ import org.apache.xerces.xni.parser.XMLComponent;
  * and properties to be queried.
  *
  * @author Andy Clark
- *
  * @version $Id: HTMLComponent.java,v 1.4 2005/02/14 03:56:54 andyc Exp $
  */
 public interface HTMLComponent 
@@ -34,17 +33,21 @@ public interface HTMLComponent
     // HTMLComponent methods
     //
 
-    /** 
+    /**
+     * {@inheritDoc}
+     *
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
      */
     public Boolean getFeatureDefault(String featureId);
 
-    /** 
+    /**
+     * {@inheritDoc}
+     *
      * Returns the default state for a property, or null if this
      * component does not want to report a default value for this
-     * property. 
+     * property.
      */
     public Object getPropertyDefault(String propertyId);
 

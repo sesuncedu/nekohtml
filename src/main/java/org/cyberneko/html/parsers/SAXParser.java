@@ -23,7 +23,6 @@ import org.cyberneko.html.HTMLConfiguration;
  * A SAX parser for HTML documents.
  *
  * @author Andy Clark
- *
  * @version $Id: SAXParser.java,v 1.4 2005/02/14 03:56:54 andyc Exp $
  */
 public class SAXParser
@@ -33,7 +32,9 @@ public class SAXParser
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public SAXParser() {
         super(new HTMLConfiguration());
     } // <init>()

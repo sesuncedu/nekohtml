@@ -19,13 +19,16 @@ import org.apache.xerces.xni.NamespaceContext;
 
 /**
  * Xerces bridge for use with Xerces 2.3 and higher
+ *
  * @author Marc Guillemot
+ * @version $Id: $Id
  */
 public class XercesBridge_2_3 extends XercesBridge_2_2
 {
 	/**
-	 * Should fail for Xerces version less than 2.3 
-	 * @throws InstantiationException if instantiation failed 
+	 * Should fail for Xerces version less than 2.3
+	 *
+	 * @throws java.lang.InstantiationException if instantiation failed
 	 */
 	public XercesBridge_2_3() throws InstantiationException {
         try {
@@ -38,6 +41,7 @@ public class XercesBridge_2_3 extends XercesBridge_2_2
         }
 	}
 
+	/** {@inheritDoc} */
 	public void NamespaceContext_declarePrefix(final NamespaceContext namespaceContext, 
 			final String ns, String avalue) {
         namespaceContext.declarePrefix(ns, avalue);

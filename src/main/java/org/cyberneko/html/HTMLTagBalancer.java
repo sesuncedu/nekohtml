@@ -57,10 +57,8 @@ import java.util.Locale;
  * </ul>
  *
  * @see HTMLElements
- *
  * @author Andy Clark
  * @author Marc Guillemot
- *
  * @version $Id: HTMLTagBalancer.java,v 1.20 2005/02/14 04:06:22 andyc Exp $
  */
 public class HTMLTagBalancer
@@ -277,7 +275,11 @@ public class HTMLTagBalancer
     // HTMLComponent methods
     //
 
-    /** Returns the default state for a feature. */
+    /**
+     * {@inheritDoc}
+     *
+     * Returns the default state for a feature.
+     */
     public Boolean getFeatureDefault(String featureId) {
         int length = RECOGNIZED_FEATURES != null ? RECOGNIZED_FEATURES.length : 0;
         for (int i = 0; i < length; i++) {
@@ -288,7 +290,11 @@ public class HTMLTagBalancer
         return null;
     } // getFeatureDefault(String):Boolean
 
-    /** Returns the default state for a property. */
+    /**
+     * {@inheritDoc}
+     *
+     * Returns the default state for a property.
+     */
     public Object getPropertyDefault(String propertyId) {
         int length = RECOGNIZED_PROPERTIES != null ? RECOGNIZED_PROPERTIES.length : 0;
         for (int i = 0; i < length; i++) {
@@ -303,17 +309,29 @@ public class HTMLTagBalancer
     // XMLComponent methods
     //
 
-    /** Returns recognized features. */
+    /**
+     * Returns recognized features.
+     *
+     * @return an array of {@link java.lang.String} objects.
+     */
     public String[] getRecognizedFeatures() {
         return RECOGNIZED_FEATURES;
     } // getRecognizedFeatures():String[]
 
-    /** Returns recognized properties. */
+    /**
+     * Returns recognized properties.
+     *
+     * @return an array of {@link java.lang.String} objects.
+     */
     public String[] getRecognizedProperties() {
         return RECOGNIZED_PROPERTIES;
     } // getRecognizedProperties():String[]
 
-    /** Resets the component. */
+    /**
+     * {@inheritDoc}
+     *
+     * Resets the component.
+     */
     public void reset(final XMLComponentManager manager)
         throws XMLConfigurationException {
 
@@ -344,7 +362,11 @@ public class HTMLTagBalancer
 
     } // reset(XMLComponentManager)
 
-    /** Sets a feature. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a feature.
+     */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
 
@@ -363,7 +385,11 @@ public class HTMLTagBalancer
 
     } // setFeature(String,boolean)
 
-    /** Sets a property. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a property.
+     */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
     
@@ -383,14 +409,22 @@ public class HTMLTagBalancer
     // XMLDocumentSource methods
     //
 
-    /** Sets the document handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the document handler.
+     */
     public void setDocumentHandler(XMLDocumentHandler handler) {
         fDocumentHandler = handler;
     } // setDocumentHandler(XMLDocumentHandler)
 
     // @since Xerces 2.1.0
 
-    /** Returns the document handler. */
+    /**
+     * Returns the document handler.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // getDocumentHandler():XMLDocumentHandler
@@ -401,7 +435,11 @@ public class HTMLTagBalancer
 
     // since Xerces-J 2.2.0
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding, 
                               NamespaceContext nscontext, Augmentations augs) 
         throws XNIException {
@@ -430,7 +468,11 @@ public class HTMLTagBalancer
 
     // old methods
 
-    /** XML declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * XML declaration.
+     */
     public void xmlDecl(String version, String encoding, String standalone,
                         Augmentations augs) throws XNIException {
         if (!fSeenAnything && fDocumentHandler != null) {
@@ -438,7 +480,11 @@ public class HTMLTagBalancer
         }
     } // xmlDecl(String,String,String,Augmentations)
 
-    /** Doctype declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * Doctype declaration.
+     */
     public void doctypeDecl(String rootElementName, String publicId, String systemId,
                             Augmentations augs) throws XNIException {
         fSeenAnything = true;
@@ -458,7 +504,11 @@ public class HTMLTagBalancer
         }
     } // doctypeDecl(String,String,String,Augmentations)
 
-    /** End document. */
+    /**
+     * {@inheritDoc}
+     *
+     * End document.
+     */
     public void endDocument(Augmentations augs) throws XNIException {
 
     	// </body> and </html> have been buffered to consider outside content
@@ -520,7 +570,11 @@ public class HTMLTagBalancer
 		endElementsBuffer_.clear();
 	}
 
-    /** Comment. */
+    /**
+     * {@inheritDoc}
+     *
+     * Comment.
+     */
     public void comment(XMLString text, Augmentations augs) throws XNIException {
         fSeenAnything = true;
         consumeEarlyTextIfNeeded();
@@ -538,7 +592,11 @@ public class HTMLTagBalancer
         }
 	}
 
-    /** Processing instruction. */
+    /**
+     * {@inheritDoc}
+     *
+     * Processing instruction.
+     */
     public void processingInstruction(String target, XMLString data,
                                       Augmentations augs) throws XNIException {
         fSeenAnything = true;
@@ -548,7 +606,11 @@ public class HTMLTagBalancer
         }
     } // processingInstruction(String,XMLString,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(final QName elem, XMLAttributes attrs, final Augmentations augs)
         throws XNIException {
         fSeenAnything = true;
@@ -777,7 +839,11 @@ public class HTMLTagBalancer
 		return new QName(null, tagName, tagName, NamespaceBinder.XHTML_1_0_URI);
 	}
 
-	/** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(final QName element, XMLAttributes attrs, Augmentations augs)
         throws XNIException {
     	startElement(element, attrs, augs);
@@ -791,7 +857,11 @@ public class HTMLTagBalancer
         }
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
-	/** Start entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start entity.
+     */
     public void startGeneralEntity(String name, 
                                    XMLResourceIdentifier id,
                                    String encoding,
@@ -843,7 +913,11 @@ public class HTMLTagBalancer
 		forceStartElement(body, null, synthesizedAugs());
 	}
 
-    /** Text declaration. */
+    /**
+     * {@inheritDoc}
+     *
+     * Text declaration.
+     */
     public void textDecl(String version, String encoding, Augmentations augs)
         throws XNIException {
         fSeenAnything = true;
@@ -860,7 +934,11 @@ public class HTMLTagBalancer
 
     } // textDecl(String,String,Augmentations)
 
-    /** End entity. */
+    /**
+     * {@inheritDoc}
+     *
+     * End entity.
+     */
     public void endGeneralEntity(String name, Augmentations augs) throws XNIException {
         
         // check for end of document
@@ -875,7 +953,11 @@ public class HTMLTagBalancer
 
     } // endGeneralEntity(String,Augmentations)
 
-    /** Start CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start CDATA section.
+     */
     public void startCDATA(Augmentations augs) throws XNIException {
         fSeenAnything = true;
         
@@ -893,7 +975,11 @@ public class HTMLTagBalancer
 
     } // startCDATA(Augmentations)
 
-    /** End CDATA section. */
+    /**
+     * {@inheritDoc}
+     *
+     * End CDATA section.
+     */
     public void endCDATA(Augmentations augs) throws XNIException {
 
         // check for end of document
@@ -908,7 +994,11 @@ public class HTMLTagBalancer
 
     } // endCDATA(Augmentations)
 
-    /** Characters. */
+    /**
+     * {@inheritDoc}
+     *
+     * Characters.
+     */
     public void characters(final XMLString text, final Augmentations augs) throws XNIException {
         // check for end of document
         if (fSeenRootElementEnd || fSeenBodyElementEnd) {
@@ -969,13 +1059,21 @@ public class HTMLTagBalancer
 
     } // characters(XMLString,Augmentations)
 
-    /** Ignorable whitespace. */
+    /**
+     * {@inheritDoc}
+     *
+     * Ignorable whitespace.
+     */
     public void ignorableWhitespace(XMLString text, Augmentations augs)
         throws XNIException {
         characters(text, augs);
     } // ignorableWhitespace(XMLString,Augmentations)
     
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(final QName element, final Augmentations augs) throws XNIException {
     	final boolean forcedEndElement = forcedEndElement_;
         // is there anything to do?
@@ -1083,25 +1181,47 @@ public class HTMLTagBalancer
 
     // @since Xerces 2.1.0
 
-	/** Sets the document source. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the document source.
+     */
     public void setDocumentSource(XMLDocumentSource source) {
         fDocumentSource = source;
     } // setDocumentSource(XMLDocumentSource)
 
-    /** Returns the document source. */
+    /**
+     * Returns the document source.
+     *
+     * @return a {@link org.apache.xerces.xni.parser.XMLDocumentSource} object.
+     */
     public XMLDocumentSource getDocumentSource() {
         return fDocumentSource;
     } // getDocumentSource():XMLDocumentSource
 
     // removed since Xerces-J 2.3.0
 
-    /** Start document. */
+    /**
+     * Start document.
+     *
+     * @param locator a {@link org.apache.xerces.xni.XMLLocator} object.
+     * @param encoding a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void startDocument(XMLLocator locator, String encoding, Augmentations augs) 
         throws XNIException {
         startDocument(locator, encoding, null, augs);
     } // startDocument(XMLLocator,String,Augmentations)
 
-    /** Start prefix mapping. */
+    /**
+     * Start prefix mapping.
+     *
+     * @param prefix a {@link java.lang.String} object.
+     * @param uri a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void startPrefixMapping(String prefix, String uri, Augmentations augs)
         throws XNIException {
         
@@ -1117,7 +1237,13 @@ public class HTMLTagBalancer
     
     } // startPrefixMapping(String,String,Augmentations)
 
-    /** End prefix mapping. */
+    /**
+     * End prefix mapping.
+     *
+     * @param prefix a {@link java.lang.String} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     public void endPrefixMapping(String prefix, Augmentations augs)
         throws XNIException {
         
@@ -1137,7 +1263,12 @@ public class HTMLTagBalancer
     // Protected methods
     //
 
-    /** Returns an HTML element. */
+    /**
+     * Returns an HTML element.
+     *
+     * @param elementName a {@link org.apache.xerces.xni.QName} object.
+     * @return a {@link org.cyberneko.html.HTMLElements.Element} object.
+     */
     protected HTMLElements.Element getElement(final QName elementName) {
     	String name = elementName.rawname;
         if (fNamespaces && NamespaceBinder.XHTML_1_0_URI.equals(elementName.uri)) {
@@ -1149,14 +1280,27 @@ public class HTMLTagBalancer
         return HTMLElements.getElement(name);
     } // getElement(String):HTMLElements.Element
 
-    /** Call document handler start element. */
+    /**
+     * Call document handler start element.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     protected final void callStartElement(QName element, XMLAttributes attrs,
                                           Augmentations augs) 
         throws XNIException {
         fDocumentHandler.startElement(element, attrs, augs);
     } // callStartElement(QName,XMLAttributes,Augmentations)
 
-    /** Call document handler end element. */
+    /**
+     * Call document handler end element.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
+     * @throws org.apache.xerces.xni.XNIException if any.
+     */
     protected final void callEndElement(QName element, Augmentations augs) 
         throws XNIException {
         fDocumentHandler.endElement(element, augs);
@@ -1167,6 +1311,7 @@ public class HTMLTagBalancer
      * element name or -1 if no matching element is found.
      *
      * @param element The element.
+     * @return a int.
      */
     protected final int getElementDepth(HTMLElements.Element element) {
         final boolean container = element.isContainer();
@@ -1199,6 +1344,8 @@ public class HTMLTagBalancer
      * element parent names or -1 if no matching element is found.
      *
      * @param parents The parent elements.
+     * @param bounds a short.
+     * @return a int.
      */
     protected int getParentDepth(HTMLElements.Element[] parents, short bounds) {
         if (parents != null) {
@@ -1217,13 +1364,21 @@ public class HTMLTagBalancer
         return -1;
     } // getParentDepth(HTMLElements.Element[],short):int
 
-    /** Returns a set of empty attributes. */
+    /**
+     * Returns a set of empty attributes.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLAttributes} object.
+     */
     protected final XMLAttributes emptyAttributes() {
         fEmptyAttrs.removeAllAttributes();
         return fEmptyAttrs;
     } // emptyAttributes():XMLAttributes
 
-    /** Returns an augmentations object with a synthesized item added. */
+    /**
+     * Returns an augmentations object with a synthesized item added.
+     *
+     * @return a {@link org.apache.xerces.xni.Augmentations} object.
+     */
     protected final Augmentations synthesizedAugs() {
         HTMLAugmentations augs = null;
         if (fAugmentations) {
@@ -1238,7 +1393,13 @@ public class HTMLTagBalancer
     // Protected static methods
     //
 
-    /** Modifies the given name based on the specified mode. */
+    /**
+     * Modifies the given name based on the specified mode.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @param mode a short.
+     * @return a {@link java.lang.String} object.
+     */
     protected static final String modifyName(String name, short mode) {
         switch (mode) {
             case NAMES_UPPERCASE: return name.toUpperCase(Locale.ENGLISH);
@@ -1248,11 +1409,19 @@ public class HTMLTagBalancer
     } // modifyName(String,short):String
 
     /**
-     * Converts HTML names string value to constant value. 
+     * Converts HTML names string value to constant value.
      *
      * @see #NAMES_NO_CHANGE
      * @see #NAMES_LOWERCASE
      * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @param value a {@link java.lang.String} object.
+     * @return a short.
      */
     protected static final short getNamesValue(String value) {
         if (value.equals("lower")) {

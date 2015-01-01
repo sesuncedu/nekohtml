@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 import java.util.Vector;
                                       
 /**
- * An XNI-based parser configuration that can be used to parse HTML 
+ * An XNI-based parser configuration that can be used to parse HTML
  * documents. This configuration can be used directly in order to
  * parse HTML documents or can be used in conjunction with any XNI
  * based tools, such as the Xerces2 implementation.
@@ -64,9 +64,7 @@ import java.util.Vector;
  * @see HTMLScanner
  * @see HTMLTagBalancer
  * @see HTMLErrorReporter
- *
  * @author Andy Clark
- *
  * @version $Id: HTMLConfiguration.java,v 1.9 2005/02/14 03:56:54 andyc Exp $
  */
 public class HTMLConfiguration 
@@ -207,7 +205,9 @@ public class HTMLConfiguration
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public HTMLConfiguration() {
 
         // add components
@@ -295,6 +295,11 @@ public class HTMLConfiguration
 
     } // <init>()
 
+	/**
+	 * <p>createDocumentScanner.</p>
+	 *
+	 * @return a {@link org.cyberneko.html.HTMLScanner} object.
+	 */
 	protected HTMLScanner createDocumentScanner() {
 		return new HTMLScanner();
 	}
@@ -303,9 +308,9 @@ public class HTMLConfiguration
     // Public methods
     //
 
-    /** 
-     * Pushes an input source onto the current entity stack. This 
-     * enables the scanner to transparently scan new content (e.g. 
+    /**
+     * Pushes an input source onto the current entity stack. This
+     * enables the scanner to transparently scan new content (e.g.
      * the output written by an embedded script). At the end of the
      * current entity, the scanner returns where it left off at the
      * time this entity source was pushed.
@@ -324,8 +329,8 @@ public class HTMLConfiguration
     } // pushInputSource(XMLInputSource)
 
     /**
-     * <font color="red">EXPERIMENTAL: may change in next release</font><br>
-     * Immediately evaluates an input source and add the new content (e.g. 
+     * <font style="color:red">EXPERIMENTAL: may change in next release</font><br>
+     * Immediately evaluates an input source and add the new content (e.g.
      * the output written by an embedded script).
      *
      * @param inputSource The new input source to start scanning.
@@ -338,7 +343,11 @@ public class HTMLConfiguration
     // XMLParserConfiguration methods
     //
 
-    /** Sets a feature. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a feature.
+     */
     public void setFeature(String featureId, boolean state)
         throws XMLConfigurationException {
         super.setFeature(featureId, state);
@@ -349,7 +358,11 @@ public class HTMLConfiguration
         }
     } // setFeature(String,boolean)
 
-    /** Sets a property. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets a property.
+     */
     public void setProperty(String propertyId, Object value)
         throws XMLConfigurationException {
         super.setProperty(propertyId, value);
@@ -373,7 +386,11 @@ public class HTMLConfiguration
         }
     } // setProperty(String,Object)
 
-    /** Sets the document handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the document handler.
+     */
     public void setDocumentHandler(XMLDocumentHandler handler) {
         fDocumentHandler = handler;
         if (handler instanceof HTMLTagBalancingListener) {
@@ -381,52 +398,92 @@ public class HTMLConfiguration
         }
     } // setDocumentHandler(XMLDocumentHandler)
 
-    /** Returns the document handler. */
+    /**
+     * Returns the document handler.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+     */
     public XMLDocumentHandler getDocumentHandler() {
         return fDocumentHandler;
     } // getDocumentHandler():XMLDocumentHandler
 
-    /** Sets the DTD handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the DTD handler.
+     */
     public void setDTDHandler(XMLDTDHandler handler) {
         fDTDHandler = handler;
     } // setDTDHandler(XMLDTDHandler)
 
-    /** Returns the DTD handler. */
+    /**
+     * Returns the DTD handler.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLDTDHandler} object.
+     */
     public XMLDTDHandler getDTDHandler() {
         return fDTDHandler;
     } // getDTDHandler():XMLDTDHandler
 
-    /** Sets the DTD content model handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the DTD content model handler.
+     */
     public void setDTDContentModelHandler(XMLDTDContentModelHandler handler) {
         fDTDContentModelHandler = handler;
     } // setDTDContentModelHandler(XMLDTDContentModelHandler)
 
-    /** Returns the DTD content model handler. */
+    /**
+     * Returns the DTD content model handler.
+     *
+     * @return a {@link org.apache.xerces.xni.XMLDTDContentModelHandler} object.
+     */
     public XMLDTDContentModelHandler getDTDContentModelHandler() {
         return fDTDContentModelHandler;
     } // getDTDContentModelHandler():XMLDTDContentModelHandler
 
-    /** Sets the error handler. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the error handler.
+     */
     public void setErrorHandler(XMLErrorHandler handler) {
         fErrorHandler = handler;
     } // setErrorHandler(XMLErrorHandler)
 
-    /** Returns the error handler. */
+    /**
+     * Returns the error handler.
+     *
+     * @return a {@link org.apache.xerces.xni.parser.XMLErrorHandler} object.
+     */
     public XMLErrorHandler getErrorHandler() {
         return fErrorHandler;
     } // getErrorHandler():XMLErrorHandler
 
-    /** Sets the entity resolver. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the entity resolver.
+     */
     public void setEntityResolver(XMLEntityResolver resolver) {
         fEntityResolver = resolver;
     } // setEntityResolver(XMLEntityResolver)
 
-    /** Returns the entity resolver. */
+    /**
+     * Returns the entity resolver.
+     *
+     * @return a {@link org.apache.xerces.xni.parser.XMLEntityResolver} object.
+     */
     public XMLEntityResolver getEntityResolver() {
         return fEntityResolver;
     } // getEntityResolver():XMLEntityResolver
 
-    /** Sets the locale. */
+    /**
+     * {@inheritDoc}
+     *
+     * Sets the locale.
+     */
     public void setLocale(Locale locale) {
         if (locale == null) {
             locale = Locale.getDefault();
@@ -434,12 +491,20 @@ public class HTMLConfiguration
         fLocale = locale;
     } // setLocale(Locale)
 
-    /** Returns the locale. */
+    /**
+     * Returns the locale.
+     *
+     * @return a {@link java.util.Locale} object.
+     */
     public Locale getLocale() {
         return fLocale;
     } // getLocale():Locale
 
-    /** Parses a document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Parses a document.
+     */
     public void parse(XMLInputSource source) throws XNIException, IOException {
         setInputSource(source);
         parse(true);
@@ -452,15 +517,13 @@ public class HTMLConfiguration
     // parsing
 
     /**
+     * {@inheritDoc}
+     *
      * Sets the input source for the document to parse.
-     *
-     * @param inputSource The document's input source.
-     *
-     * @exception XMLConfigurationException Thrown if there is a 
+     * @exception XMLConfigurationException Thrown if there is a
      *                        configuration error when initializing the
      *                        parser.
      * @exception IOException Thrown on I/O error.
-     *
      * @see #parse(boolean)
      */
     public void setInputSource(XMLInputSource inputSource)
@@ -472,19 +535,14 @@ public class HTMLConfiguration
     } // setInputSource(XMLInputSource)
 
     /**
+     * {@inheritDoc}
+     *
      * Parses the document in a pull parsing fashion.
-     *
-     * @param complete True if the pull parser should parse the
-     *                 remaining document completely.
-     *
-     * @return True if there is more document to parse.
-     *
-     * @exception XNIException Any XNI exception, possibly wrapping 
+     * @exception XNIException Any XNI exception, possibly wrapping
      *                         another exception.
      * @exception IOException  An IO exception from the parser, possibly
      *                         from a byte stream or character stream
      *                         supplied by the parser.
-     *
      * @see #setInputSource
      */
     public boolean parse(boolean complete) throws XNIException, IOException {
@@ -518,7 +576,11 @@ public class HTMLConfiguration
     // Protected methods
     //
 
-    /** Adds a component. */
+    /**
+     * Adds a component.
+     *
+     * @param component a {@link org.cyberneko.html.HTMLComponent} object.
+     */
     protected void addComponent(HTMLComponent component) {
 
         // add component to list
@@ -548,7 +610,11 @@ public class HTMLConfiguration
 
     } // addComponent(HTMLComponent)
 
-    /** Resets the parser configuration. */
+    /**
+     * Resets the parser configuration.
+     *
+     * @throws org.apache.xerces.xni.parser.XMLConfigurationException if any.
+     */
     protected void reset() throws XMLConfigurationException {
 
         // reset components
@@ -666,13 +732,21 @@ public class HTMLConfiguration
         // Protected methods
         //
 
-        /** Creates parse exception. */
+        /** Creates parse exception.
+         * @param key message key
+         * @param args message arguments
+         * @return the generated exception
+         */
         protected XMLParseException createException(String key, Object[] args) {
             String message = formatMessage(key, args);
             return new XMLParseException(fDocumentScanner, message);
         } // createException(String,Object[]):XMLParseException
 
-        /** Format simple message. */
+        /** Format simple message.
+         * @param key   message key
+         * @param args message arguments
+         * @return the formatted error message
+         * */
         protected String formatSimpleMessage(String key, Object[] args) {
             StringBuffer str = new StringBuffer();
             str.append(ERROR_DOMAIN);

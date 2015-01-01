@@ -24,8 +24,8 @@ import org.cyberneko.html.HTMLConfiguration;
  * the default parser configuration with the NekoHTML configuration.
  *
  * @author Andy Clark
- *
  * @version $Id: HTMLSAXParser.java,v 1.3 2004/02/19 20:00:17 andyc Exp $
+ * @since 1.9.22
  */
 public class HTMLSAXParser 
     extends AbstractSAXParser {
@@ -34,7 +34,9 @@ public class HTMLSAXParser
     // Constructors
     //
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     public HTMLSAXParser() {
         super(new HTMLConfiguration());
     } // <init>()

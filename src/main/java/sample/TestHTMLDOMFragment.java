@@ -28,8 +28,8 @@ import org.w3c.dom.html.HTMLDocument;
  * class names of all the nodes in the parsed document.
  *
  * @author Andy Clark
- *
  * @version $Id: TestHTMLDOMFragment.java,v 1.3 2004/02/19 20:00:17 andyc Exp $
+ * @since 1.9.22
  */
 public class TestHTMLDOMFragment {
 
@@ -37,7 +37,12 @@ public class TestHTMLDOMFragment {
     // MAIN
     //
 
-    /** Main. */
+    /**
+     * Main.
+     *
+     * @param argv an array of {@link java.lang.String} objects.
+     * @throws java.lang.Exception if any.
+     */
     public static void main(String[] argv) throws Exception {
         DOMFragmentParser parser = new DOMFragmentParser();
         HTMLDocument document = new HTMLDocumentImpl();
@@ -52,7 +57,12 @@ public class TestHTMLDOMFragment {
     // Public static methods
     //
 
-    /** Prints a node's class name. */
+    /**
+     * Prints a node's class name.
+     *
+     * @param node a {@link org.w3c.dom.Node} object.
+     * @param indent a {@link java.lang.String} object.
+     */
     public static void print(Node node, String indent) {
         System.out.println(indent+node.getClass().getName());
         Node child = node.getFirstChild();

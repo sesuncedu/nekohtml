@@ -16,20 +16,15 @@
 
 package org.cyberneko.html.filters;
 
-import java.util.Enumeration;
-import java.util.Locale;
-import java.util.Vector;
-
-import org.apache.xerces.xni.Augmentations;
-import org.apache.xerces.xni.NamespaceContext;
-import org.apache.xerces.xni.QName;
-import org.apache.xerces.xni.XMLAttributes;
-import org.apache.xerces.xni.XMLLocator;
-import org.apache.xerces.xni.XNIException;
+import org.apache.xerces.xni.*;
 import org.apache.xerces.xni.parser.XMLComponentManager;
 import org.apache.xerces.xni.parser.XMLConfigurationException;
 import org.cyberneko.html.HTMLElements;
 import org.cyberneko.html.xercesbridge.XercesBridge;
+
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.Vector;
 
 /**
  * This filter binds namespaces if namespace processing is turned on
@@ -40,9 +35,8 @@ import org.cyberneko.html.xercesbridge.XercesBridge;
  * <ul>
  * <li>http://xml.org/sax/features/namespaces
  * </ul>
- * 
+ *
  * @author Andy Clark
- * 
  * @version $Id: NamespaceBinder.java,v 1.8 2005/05/30 00:19:28 andyc Exp $
  */
 public class NamespaceBinder
@@ -171,12 +165,16 @@ public class NamespaceBinder
      * Returns a list of feature identifiers that are recognized by
      * this component. This method may return null if no features
      * are recognized by this component.
+     *
+     * @return an array of {@link java.lang.String} objects.
      */
     public String[] getRecognizedFeatures() {
         return merge(super.getRecognizedFeatures(), RECOGNIZED_FEATURES);
     } // getRecognizedFeatures():String[]
 
     /**
+     * {@inheritDoc}
+     *
      * Returns the default state for a feature, or null if this
      * component does not want to report a default value for this
      * feature.
@@ -194,12 +192,16 @@ public class NamespaceBinder
      * Returns a list of property identifiers that are recognized by
      * this component. This method may return null if no properties
      * are recognized by this component.
+     *
+     * @return an array of {@link java.lang.String} objects.
      */
     public String[] getRecognizedProperties() {
         return merge(super.getRecognizedProperties(), RECOGNIZED_PROPERTIES);
     } // getRecognizedProperties():String[]
 
     /**
+     * {@inheritDoc}
+     *
      * Returns the default value for a property, or null if this
      * component does not want to report a default value for this
      * property.
@@ -214,13 +216,11 @@ public class NamespaceBinder
     } // getPropertyDefault(String):Object
 
     /**
+     * {@inheritDoc}
+     *
      * Resets the component. The component can query the component manager
      * about any features and properties that affect the operation of the
      * component.
-     *
-     * @param manager The component manager.
-     *
-     * @throws XNIException Thrown by component on initialization error.
      */
     public void reset(XMLComponentManager manager) 
         throws XMLConfigurationException {
@@ -245,7 +245,11 @@ public class NamespaceBinder
     // XMLDocumentHandler methods
     //
 
-    /** Start document. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start document.
+     */
     public void startDocument(XMLLocator locator, String encoding,
                               NamespaceContext nscontext, Augmentations augs)
         throws XNIException {
@@ -256,7 +260,11 @@ public class NamespaceBinder
 
     } // startDocument(XMLLocator,String,NamespaceContext,Augmentations)
 
-    /** Start element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Start element.
+     */
     public void startElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         
@@ -280,7 +288,11 @@ public class NamespaceBinder
 
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** Empty element. */
+    /**
+     * {@inheritDoc}
+     *
+     * Empty element.
+     */
     public void emptyElement(QName element, XMLAttributes attrs,
                              Augmentations augs) throws XNIException {
         
@@ -317,7 +329,11 @@ public class NamespaceBinder
 
     } // startElement(QName,XMLAttributes,Augmentations)
 
-    /** End element. */
+    /**
+     * {@inheritDoc}
+     *
+     * End element.
+     */
     public void endElement(QName element, Augmentations augs)
         throws XNIException {
         
@@ -348,7 +364,11 @@ public class NamespaceBinder
     // Protected static methods
     //
 
-    /** Splits a qualified name. */
+    /**
+     * Splits a qualified name.
+     *
+     * @param qname a {@link org.apache.xerces.xni.QName} object.
+     */
     protected static void splitQName(QName qname) {
         int index = qname.rawname.indexOf(':');
         if (index != -1) {
@@ -358,11 +378,19 @@ public class NamespaceBinder
     } // splitQName(QName)
 
     /**
-     * Converts HTML names string value to constant value. 
+     * Converts HTML names string value to constant value.
      *
      * @see #NAMES_NO_CHANGE
      * @see #NAMES_LOWERCASE
      * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @see #NAMES_NO_CHANGE
+     * @see #NAMES_LOWERCASE
+     * @see #NAMES_UPPERCASE
+     * @param value a {@link java.lang.String} object.
+     * @return a short.
      */
     protected static final short getNamesValue(String value) {
         if (value.equals("lower")) { return NAMES_LOWERCASE; }
@@ -370,7 +398,13 @@ public class NamespaceBinder
         return NAMES_NO_CHANGE;
     } // getNamesValue(String):short
 
-    /** Modifies the given name based on the specified mode. */
+    /**
+     * Modifies the given name based on the specified mode.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @param mode a short.
+     * @return a {@link java.lang.String} object.
+     */
     protected static final String modifyName(String name, short mode) {
         switch (mode) {
             case NAMES_UPPERCASE: return name.toUpperCase(Locale.ENGLISH);
@@ -383,7 +417,12 @@ public class NamespaceBinder
     // Protected methods
     //
 
-    /** Binds namespaces. */
+    /**
+     * Binds namespaces.
+     *
+     * @param element a {@link org.apache.xerces.xni.QName} object.
+     * @param attrs a {@link org.apache.xerces.xni.XMLAttributes} object.
+     */
     protected void bindNamespaces(QName element, XMLAttributes attrs) {
 
         // split element qname
@@ -538,7 +577,7 @@ public class NamespaceBinder
             return fEntries[fLevels[fTop-1] + index].prefix;
         } // getDeclaredPrefixAt(int):String
 
-        /** Get parent context. */
+        /** @return the parent context. */
         public NamespaceContext getParentContext() {
             return this;
         } // getParentContext():NamespaceContext

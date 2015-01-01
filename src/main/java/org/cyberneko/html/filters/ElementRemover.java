@@ -171,6 +171,8 @@ public class ElementRemover
     // since Xerces-J 2.2.0
 
     /**
+     * {@inheritDoc}
+     *
      * Start document.
      */
     public void startDocument(XMLLocator locator, String encoding,
@@ -184,6 +186,8 @@ public class ElementRemover
     // old methods
 
     /**
+     * {@inheritDoc}
+     *
      * Start document.
      */
     public void startDocument(XMLLocator locator, String encoding, Augmentations augs)
@@ -192,6 +196,8 @@ public class ElementRemover
     } // startDocument(XMLLocator,String,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Start prefix mapping.
      */
     public void startPrefixMapping(String prefix, String uri, Augmentations augs)
@@ -202,6 +208,8 @@ public class ElementRemover
     } // startPrefixMapping(String,String,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Start element.
      */
     public void startElement(QName element, XMLAttributes attributes, Augmentations augs)
@@ -213,6 +221,8 @@ public class ElementRemover
     } // startElement(QName,XMLAttributes,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Empty element.
      */
     public void emptyElement(QName element, XMLAttributes attributes, Augmentations augs)
@@ -223,6 +233,8 @@ public class ElementRemover
     } // emptyElement(QName,XMLAttributes,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Comment.
      */
     public void comment(XMLString text, Augmentations augs)
@@ -233,6 +245,8 @@ public class ElementRemover
     } // comment(XMLString,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Processing instruction.
      */
     public void processingInstruction(String target, XMLString data, Augmentations augs)
@@ -243,6 +257,8 @@ public class ElementRemover
     } // processingInstruction(String,XMLString,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Characters.
      */
     public void characters(XMLString text, Augmentations augs)
@@ -253,6 +269,8 @@ public class ElementRemover
     } // characters(XMLString,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Ignorable whitespace.
      */
     public void ignorableWhitespace(XMLString text, Augmentations augs)
@@ -263,6 +281,8 @@ public class ElementRemover
     } // ignorableWhitespace(XMLString,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Start general entity.
      */
     public void startGeneralEntity(String name, XMLResourceIdentifier id, String encoding, Augmentations augs)
@@ -273,6 +293,8 @@ public class ElementRemover
     } // startGeneralEntity(String,XMLResourceIdentifier,String,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Text declaration.
      */
     public void textDecl(String version, String encoding, Augmentations augs)
@@ -283,6 +305,8 @@ public class ElementRemover
     } // textDecl(String,String,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * End general entity.
      */
     public void endGeneralEntity(String name, Augmentations augs)
@@ -293,6 +317,8 @@ public class ElementRemover
     } // endGeneralEntity(String,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * Start CDATA section.
      */
     public void startCDATA(Augmentations augs) throws XNIException {
@@ -302,6 +328,8 @@ public class ElementRemover
     } // startCDATA(Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * End CDATA section.
      */
     public void endCDATA(Augmentations augs) throws XNIException {
@@ -311,6 +339,8 @@ public class ElementRemover
     } // endCDATA(Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * End element.
      */
     public void endElement(QName element, Augmentations augs)
@@ -325,6 +355,8 @@ public class ElementRemover
     } // endElement(QName,Augmentations)
 
     /**
+     * {@inheritDoc}
+     *
      * End prefix mapping.
      */
     public void endPrefixMapping(String prefix, Augmentations augs)
@@ -350,6 +382,8 @@ public class ElementRemover
     } // elementAccepted(String):boolean
 
     /**
+     * <p>elementRemoved.</p>
+     *
      * @param element Name of element to test
      * @return true if the specified element should be removed.
      */

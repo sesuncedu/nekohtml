@@ -21,7 +21,6 @@ package org.cyberneko.html;
  * application through the XNI pipeline.
  *
  * @author Andy Clark
- *
  * @version $Id: HTMLEventInfo.java,v 1.4 2005/02/14 03:56:54 andyc Exp $
  */
 public interface HTMLEventInfo {
@@ -32,27 +31,55 @@ public interface HTMLEventInfo {
 
     // location information
 
-    /** Returns the line number of the beginning of this event.*/
+    /**
+     * Returns the line number of the beginning of this event.
+     *
+     * @return a int.
+     */
     public int getBeginLineNumber();
 
-    /** Returns the column number of the beginning of this event.*/
+    /**
+     * Returns the column number of the beginning of this event.
+     *
+     * @return a int.
+     */
     public int getBeginColumnNumber();
 
-    /** Returns the character offset of the beginning of this event.*/
+    /**
+     * Returns the character offset of the beginning of this event.
+     *
+     * @return a int.
+     */
     public int getBeginCharacterOffset();
 
-    /** Returns the line number of the end of this event.*/
+    /**
+     * Returns the line number of the end of this event.
+     *
+     * @return a int.
+     */
     public int getEndLineNumber();
 
-    /** Returns the column number of the end of this event.*/
+    /**
+     * Returns the column number of the end of this event.
+     *
+     * @return a int.
+     */
     public int getEndColumnNumber();
 
-    /** Returns the character offset of the end of this event.*/
+    /**
+     * Returns the character offset of the end of this event.
+     *
+     * @return a int.
+     */
     public int getEndCharacterOffset();
 
     // other information
 
-    /** Returns true if this corresponding event was synthesized. */
+    /**
+     * Returns true if this corresponding event was synthesized.
+     *
+     * @return a boolean.
+     */
     public boolean isSynthesized();
 
     /**

@@ -23,8 +23,10 @@ import org.apache.xerces.xni.parser.XMLDocumentFilter;
 import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
- * This class allows to transparently handle Xerces methods that have changed among versions. 
+ * This class allows to transparently handle Xerces methods that have changed among versions.
+ *
  * @author Marc Guillemot
+ * @version $Id: $Id
  */
 public abstract class XercesBridge 
 {
@@ -32,7 +34,8 @@ public abstract class XercesBridge
 	static private final XercesBridge instance = makeInstance();
 
 	/**
-	 * The access point for the bridge. 
+	 * The access point for the bridge.
+	 *
 	 * @return the instance corresponding to the Xerces version being currently used.
 	 */
 	public static XercesBridge getInstance()
@@ -71,26 +74,42 @@ public abstract class XercesBridge
 		return null;
 	}
 	/**
-     * Default implementation does nothing
-     */
+	 * Default implementation does nothing
+	 *
+	 * @param namespaceContext a {@link org.apache.xerces.xni.NamespaceContext} object.
+	 * @param ns a {@link java.lang.String} object.
+	 * @param avalue a {@link java.lang.String} object.
+	 */
 	public void NamespaceContext_declarePrefix(NamespaceContext namespaceContext, String ns, String avalue) {
 		// nothing
 	}
 	
 	/**
 	 * Gets the Xerces version used
+	 *
 	 * @return the version
 	 */
 	public abstract String getVersion();
 
 	/**
-	 * Calls startDocument on the {@link XMLDocumentHandler}. 
+	 * Calls startDocument on the {@link org.apache.xerces.xni.XMLDocumentHandler}.
+	 *
+	 * @param documentHandler a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+	 * @param locator a {@link org.apache.xerces.xni.XMLLocator} object.
+	 * @param encoding a {@link java.lang.String} object.
+	 * @param nscontext a {@link org.apache.xerces.xni.NamespaceContext} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	public abstract void XMLDocumentHandler_startDocument(XMLDocumentHandler documentHandler, XMLLocator locator,
 			String encoding, NamespaceContext nscontext, Augmentations augs);
 	
 	/**
-	 * Calls startPrefixMapping on the {@link XMLDocumentHandler}. 
+	 * Calls startPrefixMapping on the {@link org.apache.xerces.xni.XMLDocumentHandler}.
+	 *
+	 * @param documentHandler a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+	 * @param prefix a {@link java.lang.String} object.
+	 * @param uri a {@link java.lang.String} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	public void XMLDocumentHandler_startPrefixMapping(
 			XMLDocumentHandler documentHandler, String prefix, String uri,
@@ -99,7 +118,11 @@ public abstract class XercesBridge
 	}
 
 	/**
-	 * Calls endPrefixMapping on the {@link XMLDocumentHandler}. 
+	 * Calls endPrefixMapping on the {@link org.apache.xerces.xni.XMLDocumentHandler}.
+	 *
+	 * @param documentHandler a {@link org.apache.xerces.xni.XMLDocumentHandler} object.
+	 * @param prefix a {@link java.lang.String} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	public void XMLDocumentHandler_endPrefixMapping(
 			XMLDocumentHandler documentHandler, String prefix,
@@ -108,8 +131,11 @@ public abstract class XercesBridge
 	}
 
 	/**
-	 * Calls setDocumentSource (if available in the Xerces version used) on the {@link XMLDocumentFilter}.
+	 * Calls setDocumentSource (if available in the Xerces version used) on the {@link org.apache.xerces.xni.parser.XMLDocumentFilter}.
 	 * This implementation does nothing.
+	 *
+	 * @param filter a {@link org.apache.xerces.xni.parser.XMLDocumentFilter} object.
+	 * @param lastSource a {@link org.apache.xerces.xni.parser.XMLDocumentSource} object.
 	 */
 	public void XMLDocumentFilter_setDocumentSource(XMLDocumentFilter filter,
 			XMLDocumentSource lastSource)

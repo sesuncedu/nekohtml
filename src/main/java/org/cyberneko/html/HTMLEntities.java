@@ -28,7 +28,6 @@ import java.util.Properties;
  * Pre-defined HTML entities.
  *
  * @author Andy Clark
- *
  * @version $Id: HTMLEntities.java,v 1.5 2005/02/14 03:56:54 andyc Exp $
  */
 public class HTMLEntities {
@@ -73,18 +72,24 @@ public class HTMLEntities {
     // Public static methods
     //
 
-    /** 
+    /**
      * Returns the character associated to the given entity name, or
      * -1 if the name is not known.
+     *
+     * @param name a {@link java.lang.String} object.
+     * @return a int.
      */
     public static int get(String name) {
         String value = (String)ENTITIES.get(name);
         return value != null ? value.charAt(0) : -1;
     } // get(String):char
 
-    /** 
+    /**
      * Returns the name associated to the given character or null if
      * the character is not known.
+     *
+     * @param c a int.
+     * @return a {@link java.lang.String} object.
      */
     public static String get(int c) {
         return SEITITNE.get(c);

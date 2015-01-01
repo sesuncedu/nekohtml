@@ -53,6 +53,9 @@ class LostText
 
 	/**
 	 * Adds some text that need to be re-feed later. The information gets copied.
+	 *
+	 * @param text a {@link org.apache.xerces.xni.XMLString} object.
+	 * @param augs a {@link org.apache.xerces.xni.Augmentations} object.
 	 */
 	public void add(final XMLString text, final Augmentations augs)
 	{
@@ -61,7 +64,8 @@ class LostText
 	}
 	
 	/**
-	 * Pushes the characters into the {@link XMLDocumentHandler}
+	 * Pushes the characters into the {@link org.apache.xerces.xni.XMLDocumentHandler}
+	 *
 	 * @param tagBalancer the tag balancer that will receive the events
 	 */
 	public void refeed(final XMLDocumentHandler tagBalancer) {
@@ -75,6 +79,7 @@ class LostText
 	
 	/**
 	 * Indicates if this container contains something
+	 *
 	 * @return {@code true} if no lost text has been collected
 	 */
 	public boolean isEmpty() {

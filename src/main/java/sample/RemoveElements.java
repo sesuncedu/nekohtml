@@ -24,12 +24,12 @@ import org.apache.xerces.xni.parser.XMLInputSource;
 import org.apache.xerces.xni.parser.XMLParserConfiguration;
 
 /**
- * This is a sample that illustrates how to use the 
+ * This is a sample that illustrates how to use the
  * {@code ElementRemover} filter.
  *
  * @author Andy Clark
- *
  * @version $Id: RemoveElements.java,v 1.3 2004/02/19 20:00:17 andyc Exp $
+ * @since 1.9.22
  */
 public class RemoveElements {
 
@@ -37,7 +37,12 @@ public class RemoveElements {
     // MAIN
     //
 
-    /** Main. */
+    /**
+     * Main.
+     *
+     * @param argv an array of {@link java.lang.String} objects.
+     * @throws java.lang.Exception if any.
+     */
     public static void main(String[] argv) throws Exception {
 
         // create element remover filter

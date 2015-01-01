@@ -25,13 +25,16 @@ import org.apache.xerces.xni.parser.XMLDocumentSource;
 
 /**
  * Xerces bridge for use with Xerces 2.2 and higher
+ *
  * @author Marc Guillemot
+ * @version $Id: $Id
  */
 public class XercesBridge_2_2 extends XercesBridge 
 {
 	/**
-	 * Should fail for Xerces version less than 2.2 
-	 * @throws InstantiationException if instantiation failed 
+	 * Should fail for Xerces version less than 2.2
+	 *
+	 * @throws java.lang.InstantiationException if instantiation failed
 	 */
 	protected XercesBridge_2_2() throws InstantiationException {
         try {
@@ -42,21 +45,29 @@ public class XercesBridge_2_2 extends XercesBridge
         }
 	}
 
+	/**
+	 * <p>getVersion.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getVersion() {
 		return Version.getVersion();
 	}
 	
+	/** {@inheritDoc} */
 	public void XMLDocumentHandler_startPrefixMapping(
 			XMLDocumentHandler documentHandler, String prefix, String uri,
 			Augmentations augs) {
 		// does nothing, not needed
 	}
 
+	/** {@inheritDoc} */
 	public void XMLDocumentHandler_startDocument(XMLDocumentHandler documentHandler, XMLLocator locator,
 			String encoding, NamespaceContext nscontext, Augmentations augs) {
 		documentHandler.startDocument(locator, encoding, nscontext, augs);
      }
 
+	/** {@inheritDoc} */
 	public void XMLDocumentFilter_setDocumentSource(XMLDocumentFilter filter,
 			XMLDocumentSource lastSource) {
 		filter.setDocumentSource(lastSource);
