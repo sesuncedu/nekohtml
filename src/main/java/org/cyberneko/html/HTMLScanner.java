@@ -128,8 +128,8 @@ public class HTMLScanner
      * for compatibility with the Xerces feature.
      * <p>
      * To be notified of the built-in entity references in HTML, set the 
-     * <code>http://cyberneko.org/html/features/scanner/notify-builtin-refs</code> 
-     * feature to <code>true</code>.
+     * {@code http://cyberneko.org/html/features/scanner/notify-builtin-refs}
+     * feature to {@code true}.
      */
     public static final String NOTIFY_XML_BUILTIN_REFS = "http://apache.org/xml/features/scanner/notify-builtin-refs";
 
@@ -1804,7 +1804,6 @@ public class HTMLScanner
 
         /**
          * Gets the current character and moves to next one.
-         * @return
          */
         private char getNextChar() {
 	        characterOffset_++;
@@ -2171,7 +2170,7 @@ public class HTMLScanner
         /**
          * Scans the content of <noscript>: it doesn't get parsed but is considered as plain text
          * when feature {@link HTMLScanner#PARSE_NOSCRIPT_CONTENT} is set to false.
-         * @param the tag for which content is scanned (one of "noscript", "noframes", "iframe")
+         * @param tagName the tag for which content is scanned (one of "noscript", "noframes", "iframe")
          * @throws IOException
          */
         private void scanUntilEndTag(final String tagName) throws IOException {
@@ -2763,7 +2762,7 @@ public class HTMLScanner
 		/**
          * Tries to change the encoding used to read the input stream to the specified one
          * @param charset the charset that should be used
-         * @return <code>true</code> when the encoding has been changed
+         * @return {@code true} when the encoding has been changed
          */
 		private boolean changeEncoding(String charset) {
 			if (charset == null || fByteStream == null) {
@@ -2850,7 +2849,7 @@ public class HTMLScanner
          *                   whether the start element tag is empty 
          *                   (e.g. "/&gt;").
          * @param endc       The end character that appears before the
-         *                   closing angle bracket ('>').
+         *                   closing angle bracket ('&gt;').
          */
         protected boolean scanAttribute(XMLAttributesImpl attributes,
                                         boolean[] empty, char endc)
@@ -3340,12 +3339,12 @@ public class HTMLScanner
      * &lt;meta&gt; tag is detected that specifies a different encoding. 
      * <p>
      * If the encoding is changed, then the scanner calls the 
-     * <code>playback</code> method and re-scans the beginning of the HTML
+     * {@code playback} method and re-scans the beginning of the HTML
      * document again. This should not be too much of a performance problem
      * because the &lt;meta&gt; tag appears at the beginning of the document.
      * <p>
      * If the &lt;body&gt; tag is reached without playing back the bytes,
-     * then the buffer can be cleared by calling the <code>clear</code>
+     * then the buffer can be cleared by calling the {@code clear}
      * method. This stops the buffering of bytes and allows the memory used
      * by the buffer to be reclaimed. 
      * <p>

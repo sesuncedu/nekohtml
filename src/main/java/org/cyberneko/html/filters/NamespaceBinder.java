@@ -34,7 +34,7 @@ import org.cyberneko.html.xercesbridge.XercesBridge;
 /**
  * This filter binds namespaces if namespace processing is turned on
  * by setting the feature "http://xml.org/sax/features/namespaces" is
- * set to <code>true</code>.
+ * set to {@code true}.
  * <p>
  * This configuration recognizes the following features:
  * <ul>
@@ -481,7 +481,7 @@ public class NamespaceBinder
 
     /**
      * This namespace context object implements the old and new XNI 
-     * <code>NamespaceContext</code> interface methods so that it can
+     * {@code NamespaceContext} interface methods so that it can
      * be used across all versions of Xerces2.
      */
     public static class NamespaceSupport

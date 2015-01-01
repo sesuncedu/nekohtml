@@ -176,7 +176,7 @@ public class HTMLElements {
      * Initializes the element information.
      * <p>
      * <strong>Note:</strong>
-     * The <code>getElement</code> method requires that the HTML elements
+     * The {@code getElement} method requires that the HTML elements
      * are added to the list in alphabetical order. If new elements are
      * added, then they <em>must</em> be inserted in alphabetical order.
      */
@@ -744,7 +744,7 @@ public class HTMLElements {
         /**
          * Indicates if the provided element is an accepted parent of current element
          * @param element the element to test for "paternity"
-         * @return <code>true</code> if <code>element</code> belongs to the {@link #parent}
+         * @return {@code true} if {@code element} belongs to the {@link #parent}
          */
 		public boolean isParent(final Element element) {
 			if (parent == null)

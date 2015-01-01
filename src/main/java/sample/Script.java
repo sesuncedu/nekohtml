@@ -16,18 +16,7 @@
 
 package sample;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
-
-import org.apache.xerces.xni.Augmentations;
-import org.apache.xerces.xni.QName;
-import org.apache.xerces.xni.XMLAttributes;
-import org.apache.xerces.xni.XMLLocator;
-import org.apache.xerces.xni.XMLString;
-import org.apache.xerces.xni.XNIException;
+import org.apache.xerces.xni.*;
 import org.apache.xerces.xni.parser.XMLDocumentFilter;
 import org.apache.xerces.xni.parser.XMLInputSource;
 import org.cyberneko.html.HTMLConfiguration;
@@ -35,8 +24,10 @@ import org.cyberneko.html.filters.DefaultFilter;
 import org.cyberneko.html.filters.Identity;
 import org.cyberneko.html.filters.Writer;
 
+import java.io.*;
+
 /**
- * This sample demonstrates how to use of the <code>pushInputSource</code>
+ * This sample demonstrates how to use of the {@code pushInputSource}
  * method of the HTMLConfiguration in order to dynamically insert content
  * into the HTML stream. The typical use for this functionality is to
  * insert the result of an embedded script into the HTML document in place
@@ -45,10 +36,10 @@ import org.cyberneko.html.filters.Writer;
  * This particular example defines a new script language called "NekoHTML"
  * script that is a tiny subset of the NSGMLS format. The following table 
  * enumerates the NSGMLS features supported by this script language:
- * <table border='1' cellspacing='0', cellpadding='3'>
- * <tr><th>(<i>name</i><td>A start element with the specified <i>name</i>.
- * <tr><th>"<i>text</i><td>Character content with the specified <i>text</i>.
- * <tr><th>)<i>name</i><td>An end element with the specified <i>name</i>.
+ * <table border='1' cellspacing='0' cellpadding='3' summary="Suported features">
+ * <tr><th>(<i>name</i><td>A start element with the specified <i>name</i>.</td></tr>
+ * <tr><th>"<i>text</i><td>Character content with the specified <i>text</i>.</td></tr>
+ * <tr><th>)<i>name</i><td>An end element with the specified <i>name</i>. </td></tr>
  * </table>
  * <p>
  * In this format, every <i>command</i> is specified on a line by itself.

@@ -19,7 +19,7 @@ package org.cyberneko.html;
 import org.apache.xerces.xni.parser.XMLComponent;
 
 /**
- * This interface extends the XNI <code>XMLComponent</code> interface
+ * This interface extends the XNI {@code XMLComponent} interface
  * to add methods that allow the preferred default values for features
  * and properties to be queried.
  *

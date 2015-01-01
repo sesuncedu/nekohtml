@@ -16,22 +16,16 @@
 
 package org.cyberneko.html.filters;
 
-import java.util.Locale;
-
 import org.apache.xerces.util.XMLChar;
 import org.apache.xerces.util.XMLStringBuffer;
-import org.apache.xerces.xni.Augmentations;
-import org.apache.xerces.xni.NamespaceContext;
-import org.apache.xerces.xni.QName;
-import org.apache.xerces.xni.XMLAttributes;
-import org.apache.xerces.xni.XMLLocator;
-import org.apache.xerces.xni.XMLString;
-import org.apache.xerces.xni.XNIException;
+import org.apache.xerces.xni.*;
 import org.apache.xerces.xni.parser.XMLComponentManager;
 import org.apache.xerces.xni.parser.XMLConfigurationException;
 import org.cyberneko.html.HTMLAugmentations;
 import org.cyberneko.html.HTMLEventInfo;
 import org.cyberneko.html.xercesbridge.XercesBridge;
+
+import java.util.Locale;
 
 /**
  * This filter purifies the HTML input to ensure XML well-formedness.
@@ -45,7 +39,7 @@ import org.cyberneko.html.xercesbridge.XercesBridge;
  *  </ul>
  * <li>ensuring the string "--" does not appear in the content of
  *     a comment;
- * <li>ensuring the string "]]>" does not appear in the content of
+ * <li>ensuring the string "]]&gt;" does not appear in the content of
  *     a CDATA section; 
  * <li>ensuring that the XML declaration has required pseudo-attributes
  *     and that the values are correct;

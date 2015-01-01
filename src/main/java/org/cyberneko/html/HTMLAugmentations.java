@@ -23,10 +23,10 @@ import java.util.Hashtable;
 
 /**
  * This class is here to overcome the XNI changes to the 
- * <code>Augmentations</code> interface. In early versions of XNI, the
- * augmentations interface contained a <code>clear()</code> method to
+ * {@code Augmentations} interface. In early versions of XNI, the
+ * augmentations interface contained a {@code clear()} method to
  * remove all of the items from the augmentations instance. A later
- * version of XNI changed this method to <code>removeAllItems()</code>.
+ * version of XNI changed this method to {@code removeAllItems()}.
  * Therefore, this class extends the augmentations interface and
  * explicitly implements both of these methods.
  * <p>
@@ -89,11 +89,11 @@ public class HTMLAugmentations implements Augmentations {
      * Add additional information identified by a key to the Augmentations 
      * structure.
      * 
-     * @param key    Identifier, can't be <code>null</code>
+     * @param key    Identifier, can't be {@code null}
      * @param item   Additional information
      *
      * @return The previous value of the specified key in the Augmentations 
-     *         structure, or <code>null</code> if it did not have one.
+     *         structure, or {@code null} if it did not have one.
      */
     public Object putItem(String key, Object item) {
         return fItems.put(key, item);
@@ -103,10 +103,10 @@ public class HTMLAugmentations implements Augmentations {
     /**
      * Get information identified by a key from the Augmentations structure.
      * 
-     * @param key    Identifier, can't be <code>null</code>
+     * @param key    Identifier, can't be {@code null}
      *
      * @return The value to which the key is mapped in the Augmentations 
-     *         structure; <code>null</code> if the key is not mapped to any 
+     *         structure; {@code null} if the key is not mapped to any
      *         value.
      */
     public Object getItem(String key) {
@@ -116,9 +116,9 @@ public class HTMLAugmentations implements Augmentations {
     /**
      * Remove additional info from the Augmentations structure
      * 
-     * @param key    Identifier, can't be <code>null</code>
+     * @param key    Identifier, can't be {@code null}
      * @return The previous value of the specified key in the Augmentations 
-     *         structure, or <code>null</code> if it did not have one.
+     *         structure, or {@code null} if it did not have one.
      */
     public Object removeItem(String key) {
         return fItems.remove(key);

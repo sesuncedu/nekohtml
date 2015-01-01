@@ -21,7 +21,7 @@ import org.apache.xerces.xni.parser.XMLParseException;
 /**
  * Defines an error reporter for reporting HTML errors. There is no such 
  * thing as a fatal error in parsing HTML. I/O errors are fatal but should 
- * throw an <code>IOException</code> directly instead of reporting an error.
+ * throw an {@code IOException} directly instead of reporting an error.
  * <p>
  * When used in a configuration, the error reporter instance should be
  * set as a property with the following property identifier:

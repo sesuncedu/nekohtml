@@ -75,7 +75,7 @@ class LostText
 	
 	/**
 	 * Indicates if this container contains something
-	 * @return <code>true</code> if no lost text has been collected
+	 * @return {@code true} if no lost text has been collected
 	 */
 	public boolean isEmpty() {
 		return entries.isEmpty();

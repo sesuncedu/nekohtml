@@ -216,13 +216,23 @@ public class DefaultFilter
 
     // removed since Xerces-J 2.3.0
 
-    /** Start document. */
+
+
+    /** Start document.
+     * @param locator Locator
+     * @param encoding Character Encoding
+     * @param augs    Augmentations
+     * */
     public void startDocument(XMLLocator locator, String encoding, Augmentations augs) 
         throws XNIException {
         startDocument(locator, encoding, null, augs);
     } // startDocument(XMLLocator,String,Augmentations)
 
-    /** Start prefix mapping. */
+    /** Start prefix mapping.
+     * @param prefix Prefix
+     * @param uri Namespace URI
+     * @param augs  Augmentations
+     * */
     public void startPrefixMapping(String prefix, String uri, Augmentations augs)
         throws XNIException {
         if (fDocumentHandler != null) {
@@ -230,7 +240,10 @@ public class DefaultFilter
         }
     } // startPrefixMapping(String,String,Augmentations)
 
-    /** End prefix mapping. */
+    /** End prefix mapping.
+     * @param prefix  Prefix
+     * @param augs    Augmentations
+     * */
     public void endPrefixMapping(String prefix, Augmentations augs)
         throws XNIException {
         if (fDocumentHandler != null) {
@@ -338,6 +351,10 @@ public class DefaultFilter
     /** 
      * Utility method for merging string arrays for recognized features
      * and recognized properties.
+     * @param array1 The first array
+     * @param array2 The second array
+     * @return An array containing each element in array1 and array2 at least once.  The result may share structure
+     * with its arguments.
      */
     protected static String[] merge(String[] array1, String[] array2) {
 

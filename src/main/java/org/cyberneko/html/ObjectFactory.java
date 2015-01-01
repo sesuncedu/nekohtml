@@ -77,8 +77,8 @@ class ObjectFactory {
      * Finds the implementation Class object in the specified order.  The
      * specified order is the following:
      * <ol>
-     *  <li>query the system property using <code>System.getProperty</code>
-     *  <li>read <code>META-INF/services/<i>factoryId</i></code> file
+     *  <li>query the system property using {@code System.getProperty}
+     *  <li>read {@code META-INF/services/<i>factoryId</i>} file
      *  <li>use fallback classname
      * </ol>
      *
@@ -100,9 +100,9 @@ class ObjectFactory {
      * Finds the implementation Class object in the specified order.  The
      * specified order is the following:
      * <ol>
-     *  <li>query the system property using <code>System.getProperty</code>
-     *  <li>read <code>$java.home/lib/<i>propertiesFilename</i></code> file
-     *  <li>read <code>META-INF/services/<i>factoryId</i></code> file
+     *  <li>query the system property using {@code System.getProperty}
+     *  <li>read {@code $java.home/lib/<i>propertiesFilename</i>} file
+     *  <li>read {@code META-INF/services/<i>factoryId</i>} file
      *  <li>use fallback classname
      * </ol>
      *

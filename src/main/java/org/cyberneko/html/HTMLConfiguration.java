@@ -16,29 +16,22 @@
 
 package org.cyberneko.html;
 
-import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.Vector;
-
 import org.apache.xerces.util.DefaultErrorHandler;
 import org.apache.xerces.util.ParserConfigurationSettings;
 import org.apache.xerces.xni.XMLDTDContentModelHandler;
 import org.apache.xerces.xni.XMLDTDHandler;
 import org.apache.xerces.xni.XMLDocumentHandler;
 import org.apache.xerces.xni.XNIException;
-import org.apache.xerces.xni.parser.XMLConfigurationException;
-import org.apache.xerces.xni.parser.XMLDocumentFilter;
-import org.apache.xerces.xni.parser.XMLDocumentSource;
-import org.apache.xerces.xni.parser.XMLEntityResolver;
-import org.apache.xerces.xni.parser.XMLErrorHandler;
-import org.apache.xerces.xni.parser.XMLInputSource;
-import org.apache.xerces.xni.parser.XMLParseException;
-import org.apache.xerces.xni.parser.XMLPullParserConfiguration;
+import org.apache.xerces.xni.parser.*;
 import org.cyberneko.html.filters.NamespaceBinder;
 import org.cyberneko.html.xercesbridge.XercesBridge;
+
+import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+import java.util.Vector;
                                       
 /**
  * An XNI-based parser configuration that can be used to parse HTML 
@@ -331,7 +324,7 @@ public class HTMLConfiguration
     } // pushInputSource(XMLInputSource)
 
     /**
-     * <font color="red">EXPERIMENTAL: may change in next release</font><br/>
+     * <font color="red">EXPERIMENTAL: may change in next release</font><br>
      * Immediately evaluates an input source and add the new content (e.g. 
      * the output written by an embedded script).
      *
@@ -597,7 +590,7 @@ public class HTMLConfiguration
     /**
      * Defines an error reporter for reporting HTML errors. There is no such 
      * thing as a fatal error in parsing HTML. I/O errors are fatal but should 
-     * throw an <code>IOException</code> directly instead of reporting an error.
+     * throw an {@code IOException} directly instead of reporting an error.
      * <p>
      * When used in a configuration, the error reporter instance should be
      * set as a property with the following property identifier:

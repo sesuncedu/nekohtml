@@ -25,7 +25,7 @@ import org.apache.xerces.xni.parser.XMLParserConfiguration;
 
 /**
  * This is a sample that illustrates how to use the 
- * <code>ElementRemover</code> filter.
+ * {@code ElementRemover} filter.
  *
  * @author Andy Clark
  *

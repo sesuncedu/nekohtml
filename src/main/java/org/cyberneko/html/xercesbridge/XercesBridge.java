@@ -72,9 +72,6 @@ public abstract class XercesBridge
 	}
 	/**
      * Default implementation does nothing
-     * @param namespaceContext 
-     * @param ns
-     * @param avalue
      */
 	public void NamespaceContext_declarePrefix(NamespaceContext namespaceContext, String ns, String avalue) {
 		// nothing
